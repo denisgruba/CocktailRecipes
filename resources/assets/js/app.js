@@ -15,6 +15,7 @@ Vue.use(VueRouter);
 
 
 Vue.component('test', require('./components/Test.vue'));
+Vue.component('NavigationBar', require('./components/NavigationBar.vue'));
 
 new Vue({
     el: '#app',
