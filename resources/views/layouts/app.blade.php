@@ -18,7 +18,9 @@
     <div id="app">
         <navigation-bar></navigation-bar>
 
-        <router-view></router-view>
+        <div class="container">
+            <router-view></router-view>
+        </div>
     </div>
     <script src="/js/app.js"></script>
 </body>
