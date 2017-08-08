@@ -14,7 +14,12 @@ let routes = [
         name: 'ListFiltered',
         path: '/List/:base',
         component: require('./views/List')
-    }
+    },
+    {
+        name: 'ShowSingle',
+        path: '/Show/:id',
+        component: require('./views/Show')
+    },
 ];
 
 export default new VueRouter({

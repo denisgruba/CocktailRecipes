@@ -5,6 +5,7 @@
         </div>
     </div>
 </template>
+
 <script>
 import Base from '../models/Base';
 
