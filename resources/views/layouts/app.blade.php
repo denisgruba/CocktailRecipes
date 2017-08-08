@@ -18,9 +18,11 @@
     <div id="app">
         <navigation-bar></navigation-bar>
 
-        <div class="container">
-            <router-view></router-view>
-        </div>
+        <main>
+            <transition name="fade">
+                <router-view :key="$route.fullPath"></router-view>
+            </transition>
+        </main>
     </div>
     <script src="/js/app.js"></script>
 </body>

@@ -1,0 +1,19 @@
+header, main, nav, footer {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, nav, footer {
+        padding-left: 0;
+    }
+}
+.navbar-fixed{
+    z-index: 1000;
+}
+.side-nav li > a.disabled{
+    color: $button-flat-disabled-color;
+    cursor: default;
+    &:hover{
+        background-color: transparent;
+    }
+}

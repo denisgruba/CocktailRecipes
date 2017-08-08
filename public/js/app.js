@@ -2696,8 +2696,8 @@ window.$ = window.jQuery = __webpack_require__(23);
 __webpack_require__(24);
 
 /**
- * Import Vue Component and Vue router
- */
+* Import Vue Component and Vue router
+*/
 
 
 
@@ -2707,6 +2707,8 @@ __webpack_require__(24);
 window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
 window.axios = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
 
+window.url = "http://www.thecocktaildb.com/api/json/v1/1/";
+
 // window.axios.defaults.headers.common = {
 //     'X-Requested-With' : 'XMLHttpRequest'
 // }
@@ -2714,18 +2716,17 @@ window.axios = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]);
 
 /**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+* Next, we will create a fresh Vue application instance and attach it to
+* the page. Then, you may begin adding components to this application
+* or customize the JavaScript scaffolding to fit your unique needs.
+*/
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('test', __webpack_require__(11));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('NavigationBar', __webpack_require__(18));
 
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-  el: '#app',
-  router: __WEBPACK_IMPORTED_MODULE_3__routes__["a" /* default */]
-
+    el: '#app',
+    router: __WEBPACK_IMPORTED_MODULE_3__routes__["a" /* default */]
 });
 
 /***/ }),
@@ -12862,7 +12863,12 @@ var routes = [{
     path: '/',
     component: __webpack_require__(7)
 }, {
+    name: 'List',
     path: '/List',
+    component: __webpack_require__(9)
+}, {
+    name: 'ListFiltered',
+    path: '/List/:base',
     component: __webpack_require__(9)
 }];
 
@@ -12916,43 +12922,13 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.drinks), function(drink) {
-    return _c('div', {
-      staticClass: "col s12 m6 l3 xl2"
-    }, [_c('div', {
-      staticClass: "card"
-    }, [_c('div', {
-      staticClass: "card-image"
-    }, [_c('img', {
-      attrs: {
-        "src": drink.strDrinkThumb
-      }
-    }), _vm._v(" "), _vm._m(1, true)]), _vm._v(" "), _c('div', {
-      staticClass: "card-content"
-    }, [_c('span', {
-      staticClass: "card-title"
-    }, [_vm._v(_vm._s(drink.strDrink))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(drink.idDrink))])]), _vm._v(" "), _vm._m(2, true)])])
-  })], 2)
+  return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
     staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Browse")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    staticClass: "btn-floating halfway-fab waves-effect waves-light red"
-  }, [_c('i', {
-    staticClass: "material-icons"
-  }, [_vm._v("favorite_border")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "card-action"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("This is a link")])])
+  }, [_c('h4', [_vm._v("Browse")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -13007,8 +12983,42 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n    I am a List\n")])
-},staticRenderFns: []}
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col s12 m12"
+  }, [_c('h4', [_vm._v("Browse")]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.$route.params.base ? _vm.spaceThis(_vm.$route.params.base) : 'All'))])]), _vm._v(" "), _vm._l((_vm.drinks), function(drink) {
+    return _c('div', {
+      staticClass: "col s12 m6 l4 xl3"
+    }, [_c('div', {
+      staticClass: "card"
+    }, [_c('div', {
+      staticClass: "card-image"
+    }, [_c('img', {
+      attrs: {
+        "src": drink.strDrinkThumb != null ? drink.strDrinkThumb : '/img/no_thumb.jpg'
+      }
+    }), _vm._v(" "), _vm._m(0, true)]), _vm._v(" "), _c('div', {
+      staticClass: "card-content"
+    }, [_c('span', {
+      staticClass: "card-title"
+    }, [_vm._v(_vm._s(drink.strDrink))])]), _vm._v(" "), _vm._m(1, true)])])
+  })], 2)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    staticClass: "btn-floating halfway-fab waves-effect waves-light red"
+  }, [_c('i', {
+    staticClass: "material-icons"
+  }, [_vm._v("favorite_border")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "card-action"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("View Recipe")])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -13170,6 +13180,18 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_Base__ = __webpack_require__(56);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -13183,7 +13205,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            bases: {}
+        };
+    },
+
+    methods: {
+        underscoreThis: function underscoreThis(text) {
+            return text.replace(/ /g, "_");
+        }
+    },
+    created: function created() {
+        var _this = this;
+
+        __WEBPACK_IMPORTED_MODULE_0__models_Base__["a" /* default */].all().then(function (response) {
+            return _this.bases = response.data.drinks;
+        });
+        $(document).ready(function () {
+            $(".button-collapse").sideNav();
+        });
+    }
+});
 
 /***/ }),
 /* 20 */
@@ -13194,7 +13240,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "navbar-fixed"
   }, [_c('nav', {
     staticClass: "blue"
-  }, [_c('div', {
+  }, [_c('ul', {
+    staticClass: "side-nav fixed",
+    attrs: {
+      "id": "slide-out"
+    }
+  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.bases), function(base) {
+    return (base.strAlcoholic) ? _c('li', [_c('router-link', {
+      attrs: {
+        "to": {
+          name: 'ListFiltered',
+          params: {
+            base: _vm.underscoreThis(base.strAlcoholic)
+          }
+        }
+      }
+    }, [_vm._v("\n                    " + _vm._s(base.strAlcoholic) + "\n                ")])], 1) : _vm._e()
+  })], 2), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "nav-wrapper"
   }, [_c('ul', {
     staticClass: "left"
@@ -13211,7 +13273,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "tag": "li"
     }
   }, [_c('a', [_vm._v("List")])])], 1)])])])
-},staticRenderFns: []}
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
+    staticClass: "disabled",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("View Bases:")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    staticClass: "button-collapse",
+    attrs: {
+      "href": "#",
+      "data-activates": "slide-out"
+    }
+  }, [_c('i', {
+    staticClass: "material-icons"
+  }, [_vm._v("tune")])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -13226,13 +13305,62 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(58);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            drinks: {}
+        };
+    },
+
+    methods: {
+        spaceThis: function spaceThis(text) {
+            return text.replace("_", " ");
+        },
+        updateDrinks: function updateDrinks() {
+            var _this = this;
+
+            if (this.$route.params.base) __WEBPACK_IMPORTED_MODULE_0__models_FetchList__["a" /* default */].byBase(this.$route.params.base).then(function (response) {
+                return _this.drinks = response.data.drinks;
+            });else this.drinks = {};
+        }
+    },
+    created: function created() {
+        this.updateDrinks();
+    },
+
+    watch: {
+        '$route': function $route(to, from) {
+            this.updateDrinks();
+        }
+    }
+
+});
 
 /***/ }),
 /* 22 */
@@ -13240,6 +13368,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_Base__ = __webpack_require__(56);
 //
 //
 //
@@ -13247,22 +13376,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -13273,7 +13388,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        axios.get('http://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic').then(function (response) {
+        __WEBPACK_IMPORTED_MODULE_0__models_Base__["a" /* default */].all().then(function (response) {
             return _this.drinks = response.data.drinks;
         });
     }
@@ -38005,6 +38120,62 @@ module.exports = function spread(callback) {
   };
 };
 
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Base = function () {
+    function Base() {
+        _classCallCheck(this, Base);
+    }
+
+    _createClass(Base, null, [{
+        key: 'all',
+        value: function all() {
+            return axios.get(url + 'list.php?a=list');
+        }
+    }]);
+
+    return Base;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Base);
+
+/***/ }),
+/* 57 */,
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var FetchList = function () {
+    function FetchList() {
+        _classCallCheck(this, FetchList);
+    }
+
+    _createClass(FetchList, null, [{
+        key: 'byBase',
+        value: function byBase(base) {
+            return axios.get(url + 'filter.php?a=' + base);
+        }
+    }, {
+        key: 'all',
+        value: function all() {}
+    }]);
+
+    return FetchList;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (FetchList);
 
 /***/ })
 /******/ ]);
