@@ -13,6 +13,8 @@ import router from './routes';
 window.Vue = Vue;
 window.axios = axios;
 
+window.favouritesID = [];
+
 window.url = "http://www.thecocktaildb.com/api/json/v1/1/";
 
 // window.axios.defaults.headers.common = {
@@ -28,10 +30,16 @@ Vue.use(VueRouter);
 */
 
 
-Vue.component('test', require('./components/Test.vue'));
+// Vue.component('test', require('./components/Test.vue'));
 Vue.component('NavigationBar', require('./components/NavigationBar.vue'));
+Vue.component('DrinkCard', require('./components/DrinkCard.vue'));
 
-new Vue({
+const myApp = new Vue({
     el: '#app',
-    router: router
+    router: router,
+    data() {
+        return {
+
+        }
+    }
 });

@@ -1,24 +1,11 @@
-<template>
+<template @addFavourite="console.log('tet')">
     <div class="row">
         <div class="col s12 m12">
             <h4>Browse</h4>
             <h5>{{$route.params.base ? spaceThis($route.params.base) : 'All'}}</h5>
         </div>
         <div v-for="drink in drinks" class="col s12 m6 l4 xl3">
-            <div class="card hoverable">
-                <div class="card-image">
-                    <img :src="drink.strDrinkThumb != null ? drink.strDrinkThumb : '/img/no_thumb.jpg'">
-                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite_border</i></a>
-                </div>
-                <div class="card-content">
-                    <span class="card-title">{{drink.strDrink}}</span>
-                </div>
-                <div class="card-action">
-                    <router-link :to="{ name: 'ShowSingle', params: { id: drink.idDrink }}">
-                        View Recipe
-                    </router-link>
-                </div>
-            </div>
+            <drink-card :drink="drink" :favs="favouritesID" @fave="addFavourite" @unfave="removeFavourite"></drink-card>
         </div>
     </div>
 </template>
@@ -29,10 +16,17 @@ import FetchList from '../models/FetchList';
 export default {
     data() {
         return {
-            drinks: {}
+            drinks: {},
+            favouritesID: []
         }
     },
     methods: {
+        addFavourite (id) {
+            this.favouritesID.push(id);
+        },
+        removeFavourite (id) {
+            this.favouritesID.splice( this.favouritesID.indexOf(id), 1 );
+        },
         spaceThis (text) {
             return text.replace("_", " ");
         },
@@ -46,12 +40,15 @@ export default {
     },
     created() {
         this.updateDrinks();
+        this.favouritesID = favouritesID;
     },
     watch: {
         '$route' (to, from) {
             this.updateDrinks();
+        },
+        favouritesID () {
+            favouritesID = this.favouritesID;
         }
     }
-
 }
 </script>

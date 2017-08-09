@@ -8,12 +8,17 @@ let routes = [
     {
         name: 'List',
         path: '/List',
-        component: require('./views/List')
+        component: require('./views/ListAlphabet')
     },
     {
-        name: 'ListFiltered',
-        path: '/List/:base',
-        component: require('./views/List')
+        name: 'ListAlphabet',
+        path: '/List/ByAlphabet/:letter',
+        component: require('./views/ListAlphabet')
+    },
+    {
+        name: 'ListBase',
+        path: '/List/ByBase/:base',
+        component: require('./views/ListBase')
     },
     {
         name: 'ShowSingle',

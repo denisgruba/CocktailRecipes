@@ -17,7 +17,7 @@
 <body>
     <div id="app">
         <navigation-bar></navigation-bar>
-
+        <div ></div>
         <main>
             <transition name="fade">
                 <router-view :key="$route.fullPath"></router-view>

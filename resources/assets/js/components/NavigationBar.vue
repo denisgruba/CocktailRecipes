@@ -4,7 +4,7 @@
             <ul id="slide-out" class="side-nav fixed">
                 <li><a href="" class="disabled">View Bases:</a></li>
                 <li v-for="base in bases" v-if="base.strAlcoholic">
-                    <router-link :to="{ name: 'ListFiltered', params: { base:  underscoreThis(base.strAlcoholic) }}">
+                    <router-link :to="{ name: 'ListBase', params: { base:  underscoreThis(base.strAlcoholic) }}">
                         {{base.strAlcoholic}}
                     </router-link>
                 </li>
@@ -17,7 +17,6 @@
                 </ul>
             </div>
         </nav>
-
     </div>
 </template>
 
