@@ -38034,6 +38034,10 @@ var routes = [{
     path: '/List/ByBase/:base',
     component: __webpack_require__(53)
 }, {
+    name: 'ListFavorites',
+    path: '/List/Favorites',
+    component: __webpack_require__(73)
+}, {
     name: 'ShowSingle',
     path: '/Show/:id',
     component: __webpack_require__(56)
@@ -39352,6 +39356,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -39423,7 +39428,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "exact": "",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("List")])])], 1), _vm._v(" "), _c('ul', {
+  }, [_c('a', [_vm._v("List")])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/List/Favorites",
+      "exact": "",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Favorites")])])], 1), _vm._v(" "), _c('ul', {
     staticClass: "right"
   }, [_c('li', [_c('a', {
     on: {
@@ -39606,6 +39617,178 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(74),
+  /* template */
+  __webpack_require__(75),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/DenisGruba/Sites/Ocasta-test/resources/assets/js/views/ListFavorites.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] ListFavorites.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1a0ec393", Component.options)
+  } else {
+    hotAPI.reload("data-v-1a0ec393", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(14);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            drinks: {},
+            favouritesID: [],
+            favouritesObjects: []
+        };
+    },
+
+    methods: {
+        addFavourite: function addFavourite(object) {
+            this.favouritesID.push(object.idDrink);
+            this.favouritesObjects.push(object);
+        },
+        removeFavourite: function removeFavourite(object) {
+            this.favouritesID.splice(this.favouritesID.indexOf(object.idDrink), 1);
+            this.favouritesObjects = this.favouritesObjects.filter(function (el) {
+                if (el.idDrink !== object.idDrink) {
+                    return true;
+                } else return false;
+            });
+        },
+        spaceThis: function spaceThis(text) {
+            return text.replace("_", " ");
+        },
+        updateDrinks: function updateDrinks() {
+            var _this = this;
+
+            if (this.$route.params.base) __WEBPACK_IMPORTED_MODULE_0__models_FetchList__["a" /* default */].byBase(this.$route.params.base).then(function (response) {
+                return _this.drinks = response.data.drinks;
+            });else this.drinks = {};
+        }
+    },
+    created: function created() {
+        this.updateDrinks();
+        this.favouritesID = favouritesID;
+        this.favouritesObjects = favouritesObjects;
+    },
+
+    watch: {
+        '$route': function $route(to, from) {
+            this.updateDrinks();
+        },
+        favouritesID: function (_favouritesID) {
+            function favouritesID() {
+                return _favouritesID.apply(this, arguments);
+            }
+
+            favouritesID.toString = function () {
+                return _favouritesID.toString();
+            };
+
+            return favouritesID;
+        }(function () {
+            favouritesID = this.favouritesID;
+            Vue.ls.set('favouritesID', favouritesID);
+        }),
+        favouritesObjects: function (_favouritesObjects) {
+            function favouritesObjects() {
+                return _favouritesObjects.apply(this, arguments);
+            }
+
+            favouritesObjects.toString = function () {
+                return _favouritesObjects.toString();
+            };
+
+            return favouritesObjects;
+        }(function () {
+            favouritesObjects = this.favouritesObjects;
+            Vue.ls.set('favouritesObjects', favouritesObjects);
+        })
+    }
+});
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.favouritesObjects), function(drink) {
+    return _c('div', {
+      staticClass: "col s12 m6 l4 xl3"
+    }, [_c('drink-card', {
+      attrs: {
+        "drink": drink,
+        "favs": _vm.favouritesID
+      },
+      on: {
+        "fave": _vm.addFavourite,
+        "unfave": _vm.removeFavourite
+      }
+    })], 1)
+  })], 2)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col s12 m12"
+  }, [_c('h4', [_vm._v("Favorite Drinks")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1a0ec393", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

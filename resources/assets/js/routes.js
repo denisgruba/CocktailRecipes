@@ -21,6 +21,11 @@ let routes = [
         component: require('./views/ListBase')
     },
     {
+        name: 'ListFavorites',
+        path: '/List/Favorites',
+        component: require('./views/ListFavorites')
+    },
+    {
         name: 'ShowSingle',
         path: '/Show/:id',
         component: require('./views/Show')
