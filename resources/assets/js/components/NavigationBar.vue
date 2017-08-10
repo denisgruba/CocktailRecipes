@@ -15,6 +15,11 @@
                     <router-link to="/" exact tag="li"><a>Home</a></router-link>
                     <router-link to="/List" exact tag="li"><a>List</a></router-link>
                 </ul>
+                <ul class="right">
+                    <li>
+                        <a @click="clearLocalStorage">Remove All Favorites</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>
@@ -32,6 +37,9 @@ export default {
     methods: {
         underscoreThis (text) {
             return text.replace(/ /g,"_");
+        },
+        clearLocalStorage () {
+            Vue.ls.clear();
         }
     },
     created() {

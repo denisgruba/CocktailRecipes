@@ -14056,6 +14056,7 @@ window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
 window.axios = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
 
 window.favouritesID = [];
+window.favouritesObjects = [];
 
 window.url = "http://www.thecocktaildb.com/api/json/v1/1/";
 
@@ -14089,6 +14090,8 @@ var myApp = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         handleLocalStorage: function handleLocalStorage() {
             var favlist = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.ls.get('favouritesID', []);
             favouritesID = favlist;
+            var favObjects = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.ls.get('favouritesObjects', []);
+            favouritesObjects = favObjects;
         }
     },
     created: function created() {
@@ -38410,16 +38413,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             drinks: {},
-            favouritesID: []
+            favouritesID: [],
+            favouritesObjects: []
         };
     },
 
     methods: {
-        addFavourite: function addFavourite(id) {
-            this.favouritesID.push(id);
+        addFavourite: function addFavourite(object) {
+            this.favouritesID.push(object.idDrink);
+            this.favouritesObjects.push(object);
         },
-        removeFavourite: function removeFavourite(id) {
-            this.favouritesID.splice(this.favouritesID.indexOf(id), 1);
+        removeFavourite: function removeFavourite(object) {
+            this.favouritesID.splice(this.favouritesID.indexOf(object.idDrink), 1);
+            this.favouritesObjects = this.favouritesObjects.filter(function (el) {
+                if (el.idDrink !== object.idDrink) {
+                    return true;
+                } else return false;
+            });
         },
         spaceThis: function spaceThis(text) {
             return text.replace("_", " ");
@@ -38435,6 +38445,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         this.updateDrinks();
         this.favouritesID = favouritesID;
+        this.favouritesObjects = favouritesObjects;
     },
 
     watch: {
@@ -38454,6 +38465,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }(function () {
             favouritesID = this.favouritesID;
             Vue.ls.set('favouritesID', favouritesID);
+        }),
+        favouritesObjects: function (_favouritesObjects) {
+            function favouritesObjects() {
+                return _favouritesObjects.apply(this, arguments);
+            }
+
+            favouritesObjects.toString = function () {
+                return _favouritesObjects.toString();
+            };
+
+            return favouritesObjects;
+        }(function () {
+            favouritesObjects = this.favouritesObjects;
+            Vue.ls.set('favouritesObjects', favouritesObjects);
         })
     }
 });
@@ -39322,6 +39347,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -39335,6 +39365,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         underscoreThis: function underscoreThis(text) {
             return text.replace(/ /g, "_");
+        },
+        clearLocalStorage: function clearLocalStorage() {
+            Vue.ls.clear();
         }
     },
     created: function created() {
@@ -39390,7 +39423,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "exact": "",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("List")])])], 1)])])])
+  }, [_c('a', [_vm._v("List")])])], 1), _vm._v(" "), _c('ul', {
+    staticClass: "right"
+  }, [_c('li', [_c('a', {
+    on: {
+      "click": _vm.clearLocalStorage
+    }
+  }, [_vm._v("Remove All Favorites")])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('a', {
     staticClass: "disabled",
@@ -39497,11 +39536,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     props: ['drink', 'favs'],
     methods: {
-        addFavourite: function addFavourite(id) {
-            this.$emit('fave', id);
+        addFavourite: function addFavourite(drink) {
+            this.$emit('fave', drink);
         },
-        removeFavourite: function removeFavourite(id) {
-            this.$emit('unfave', id);
+        removeFavourite: function removeFavourite(drink) {
+            this.$emit('unfave', drink);
         }
     }
 });
@@ -39523,7 +39562,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "btn-floating halfway-fab waves-effect waves-light red",
     on: {
       "click": function($event) {
-        _vm.removeFavourite(_vm.drink.idDrink)
+        _vm.removeFavourite(_vm.drink)
       }
     }
   }, [_c('i', {
@@ -39532,7 +39571,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "btn-floating halfway-fab waves-effect waves-light red",
     on: {
       "click": function($event) {
-        _vm.addFavourite(_vm.drink.idDrink)
+        _vm.addFavourite(_vm.drink)
       }
     }
   }, [_c('i', {

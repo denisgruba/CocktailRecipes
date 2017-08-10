@@ -17,15 +17,22 @@ export default {
     data() {
         return {
             drinks: {},
-            favouritesID: []
+            favouritesID: [],
+            favouritesObjects: []
         }
     },
     methods: {
-        addFavourite (id) {
-            this.favouritesID.push(id);
+        addFavourite (object) {
+            this.favouritesID.push(object.idDrink);
+            this.favouritesObjects.push(object);
         },
-        removeFavourite (id) {
-            this.favouritesID.splice( this.favouritesID.indexOf(id), 1 );
+        removeFavourite (object) {
+            this.favouritesID.splice( this.favouritesID.indexOf(object.idDrink), 1 );
+            this.favouritesObjects = this.favouritesObjects.filter( function(el) {
+                if(el.idDrink !== object.idDrink){
+                    return true
+                } else return false;
+            });
         },
         spaceThis (text) {
             return text.replace("_", " ");
@@ -41,6 +48,7 @@ export default {
     created() {
         this.updateDrinks();
         this.favouritesID = favouritesID;
+        this.favouritesObjects = favouritesObjects;
     },
     watch: {
         '$route' (to, from) {
@@ -49,6 +57,10 @@ export default {
         favouritesID () {
             favouritesID = this.favouritesID;
             Vue.ls.set('favouritesID', favouritesID);
+        },
+        favouritesObjects () {
+            favouritesObjects = this.favouritesObjects;
+            Vue.ls.set('favouritesObjects', favouritesObjects);
         }
     }
 }

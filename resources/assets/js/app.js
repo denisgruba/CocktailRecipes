@@ -15,6 +15,7 @@ window.Vue = Vue;
 window.axios = axios;
 
 window.favouritesID = [];
+window.favouritesObjects = [];
 
 window.url = "http://www.thecocktaildb.com/api/json/v1/1/";
 
@@ -50,10 +51,11 @@ const myApp = new Vue({
         handleLocalStorage (){
             var favlist = Vue.ls.get('favouritesID', []);
             favouritesID = favlist;
+            var favObjects = Vue.ls.get('favouritesObjects', []);
+            favouritesObjects = favObjects;
         }
     },
     created() {
         this.handleLocalStorage ();
-
     }
 });

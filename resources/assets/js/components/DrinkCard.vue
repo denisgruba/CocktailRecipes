@@ -3,12 +3,12 @@
         <div class="card-image">
             <img :src="drink.strDrinkThumb != null ? drink.strDrinkThumb : '/img/no_thumb.jpg'">
             <a v-if="this.favs.includes(drink.idDrink)" class="btn-floating halfway-fab waves-effect waves-light red"
-                @click="removeFavourite(drink.idDrink)"
+                @click="removeFavourite(drink)"
             >
                 <i class="material-icons">favorite</i>
             </a>
             <a v-else class="btn-floating halfway-fab waves-effect waves-light red"
-                @click="addFavourite(drink.idDrink)"
+                @click="addFavourite(drink)"
             >
                 <i class="material-icons">favorite_border</i>
             </a>
@@ -33,11 +33,11 @@ export default {
     },
     props: ['drink', 'favs'],
     methods: {
-        addFavourite (id) {
-            this.$emit('fave', id);
+        addFavourite (drink) {
+            this.$emit('fave', drink);
         },
-        removeFavourite (id) {
-            this.$emit('unfave', id);
+        removeFavourite (drink) {
+            this.$emit('unfave', drink);
         },
     },
 }
