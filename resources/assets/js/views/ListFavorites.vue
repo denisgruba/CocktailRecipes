@@ -70,12 +70,12 @@ export default {
     computed: {
         drinksFiltered: function () {
             if(this.filterImagesOut){
-                return this.drinks.filter( function(el) {
+                return this.favouritesObjects.filter( function(el) {
                     if(el.strDrinkThumb){
                         return true
                     } else return false;
                 });
-            } else return this.drinks;
+            } else return this.favouritesObjects;
         }
     }
 }
