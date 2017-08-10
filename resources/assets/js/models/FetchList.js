@@ -3,10 +3,10 @@ class FetchList {
             return axios.get(url+'filter.php?a='+base);
     };
     static byLetter(letter) {
-            return axios.get(url+'filter.php?a='+base);
+            return axios.get(url+'search.php?s='+letter);
     };
-    static all() {
-
+    static byIngredient(ingredient) {
+            return axios.get(url+'filter.php?i='+ingredient);
     };
 }
 

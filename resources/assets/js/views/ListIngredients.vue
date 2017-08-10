@@ -1,30 +1,31 @@
-<template>
+<template @addFavourite="console.log('tet')">
     <div class="row">
         <div class="col s12 m12">
-            <h4>Search alphabet</h4>
-            <h5>Contains {{$route.params.letter ? $route.params.letter : 'Alphabet'}}</h5>
+            <h4>Browse</h4>
+            <h5>{{$route.params.ingredient ? spaceThis($route.params.ingredient) : 'All'}}</h5>
         </div>
         <ul class="pagination">
-            <li v-for="letter in alphabet" :class="$route.params.letter == letter ? 'active' : 'waves-effect'">
-                <router-link :to="{ name: 'ListAlphabet', params: { letter:  letter }}">
-                    {{letter}}
+            <li v-for="ingredient in ingredients" :class="$route.params.ingredient == underscoreThis(ingredient.strIngredient1) ? 'active' : 'waves-effect'">
+                <router-link :to="{ name: 'ListIngredientSelected', params: { ingredient:  underscoreThis(ingredient.strIngredient1) }}">
+                    {{ingredient.strIngredient1}}
                 </router-link>
             </li>
         </ul>
-        <div v-for="drink in drinks" class="col s12 m6 l4 xl3">
+        <div v-for="drink in drinks" class="col s12 m6 l4 xl3 drink-container">
             <drink-card :drink="drink" :favs="favouritesID" @fave="addFavourite" @unfave="removeFavourite"></drink-card>
         </div>
     </div>
 </template>
 
 <script>
+import Ingredients from '../models/Ingredients';
 import FetchList from '../models/FetchList';
 
 export default {
     data() {
         return {
-            drinks: {},
-            alphabet: [],
+            ingredients: {},
+            drinks: [],
             favouritesID: [],
             favouritesObjects: []
         }
@@ -42,25 +43,26 @@ export default {
                 } else return false;
             });
         },
-        assignAlphabet (){
-            var charCodeRange = {
-                start: 65,
-                end: 90
-            }
-            for (var cc = charCodeRange.start; cc <= charCodeRange.end; cc++) {
-                this.alphabet.push(String.fromCharCode(cc));
-            }
+        getIngredientsList (){
+            Ingredients.all()
+                .then(response => this.ingredients = response.data.drinks);
+        },
+        underscoreThis (text) {
+            return text.replace(/ /g,"_");
+        },
+        spaceThis (text) {
+            return text.replace("_", " ");
         },
         updateDrinks () {
-            if(this.$route.params.letter)
-                FetchList.byLetter(this.$route.params.letter)
+            if(this.$route.params.ingredient)
+                FetchList.byIngredient(this.$route.params.ingredient)
                     .then(response => this.drinks = response.data.drinks);
             else
-                this.drinks = {};
+                this.drinks = [];
         }
     },
     created() {
-        this.assignAlphabet();
+        this.getIngredientsList();
         this.updateDrinks();
         this.favouritesID = favouritesID;
         this.favouritesObjects = favouritesObjects;
@@ -78,6 +80,5 @@ export default {
             Vue.ls.set('favouritesObjects', favouritesObjects);
         }
     }
-
 }
 </script>

@@ -16,7 +16,7 @@ import FetchList from '../models/FetchList';
 export default {
     data() {
         return {
-            drinks: {},
+            drinks: [],
             favouritesID: [],
             favouritesObjects: []
         }
@@ -42,7 +42,7 @@ export default {
                 FetchList.byBase(this.$route.params.base)
                     .then(response => this.drinks = response.data.drinks);
             else
-                this.drinks = {};
+                this.drinks = [];
         }
     },
     created() {

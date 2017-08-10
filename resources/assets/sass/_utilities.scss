@@ -1,11 +1,9 @@
 .cursor-pointer{
     cursor: pointer;
 }
-// @media #{$small-and-down}{
-//     .col:nth-child(3n+1) {
-//         clear: left;
-//     }
-// }
+.pagination{
+    text-align: center;
+}
 @media #{$medium-only}{
     .drink-container:nth-child(2n+2) {
         clear: left;

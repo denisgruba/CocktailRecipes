@@ -21,6 +21,16 @@ let routes = [
         component: require('./views/ListBase')
     },
     {
+        name: 'ListIngredient',
+        path: '/List/ByIngredient',
+        component: require('./views/ListIngredients')
+    },
+    {
+        name: 'ListIngredientSelected',
+        path: '/List/ByIngredient/:ingredient',
+        component: require('./views/ListIngredients')
+    },
+    {
         name: 'ListFavorites',
         path: '/List/Favorites',
         component: require('./views/ListFavorites')

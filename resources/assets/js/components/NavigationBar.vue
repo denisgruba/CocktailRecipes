@@ -13,7 +13,8 @@
             <div class="nav-wrapper">
                 <ul class="left">
                     <router-link to="/" exact tag="li"><a>Home</a></router-link>
-                    <router-link to="/List" exact tag="li"><a>List</a></router-link>
+                    <router-link to="/List/ByIngredient" exact tag="li"><a>List Ingredients</a></router-link>
+                    <router-link to="/List" exact tag="li"><a>Search</a></router-link>
                     <router-link to="/List/Favorites" exact tag="li"><a>Favorites</a></router-link>
                 </ul>
                 <ul class="right">
