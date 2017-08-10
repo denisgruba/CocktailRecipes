@@ -62,6 +62,7 @@ export default {
         },
         favouritesID () {
             favouritesID = this.favouritesID;
+            Vue.ls.set('favouritesID', favouritesID);
         }
     }
 

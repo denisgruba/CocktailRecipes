@@ -8,6 +8,7 @@ Uses [TheCocktailDB](http://www.thecocktaildb.com/) API to list and filter Cockt
 - List Cocktails by Alcoholic and Non Alcoholic
 - See the recipe details
 - Add recipe to Favorites
+- Favorite Recipes are stored in browser's Local Storage
 
 ## Details about the code
 

@@ -9,6 +9,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueRouter from 'vue-router';
 import router from './routes';
+import VueLocalStorage from 'vue-ls';
 
 window.Vue = Vue;
 window.axios = axios;
@@ -22,6 +23,9 @@ window.url = "http://www.thecocktaildb.com/api/json/v1/1/";
 // }
 
 Vue.use(VueRouter);
+Vue.use(VueLocalStorage, {
+    namespace: 'vuejs__'
+});
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -41,5 +45,15 @@ const myApp = new Vue({
         return {
 
         }
+    },
+    methods : {
+        handleLocalStorage (){
+            var favlist = Vue.ls.get('favouritesID', []);
+            favouritesID = favlist;
+        }
+    },
+    created() {
+        this.handleLocalStorage ();
+
     }
 });

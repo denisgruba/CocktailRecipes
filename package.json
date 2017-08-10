@@ -17,5 +17,8 @@
     "materialize-css": "^0.100.1",
     "vue": "^2.1.10",
     "vue-router": "^2.7.0"
+  },
+  "dependencies": {
+    "vue-ls": "^2.3.0"
   }
 }
