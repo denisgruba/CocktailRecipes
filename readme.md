@@ -6,9 +6,11 @@
 Uses [TheCocktailDB](http://www.thecocktaildb.com/) API to list and filter Cocktail recipes. Allows to save drinks as Favorite.
 
 - List Cocktails by Alcoholic and Non Alcoholic
+- Filter Recipes by their ingredients
 - See the recipe details
 - Add recipe to Favorites
 - Favorite Recipes are stored in browser's Local Storage
+- Search for Recipes by their name
 
 ## Details about the code
 

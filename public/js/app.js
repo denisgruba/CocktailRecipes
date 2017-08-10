@@ -37955,6 +37955,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -37964,7 +37965,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             drinks: {},
             alphabet: [],
             favouritesID: [],
-            favouritesObjects: []
+            favouritesObjects: [],
+            filterImagesOut: false
         };
     },
 
@@ -37996,6 +37998,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.$route.params.letter) __WEBPACK_IMPORTED_MODULE_0__models_FetchList__["a" /* default */].byLetter(this.$route.params.letter).then(function (response) {
                 return _this.drinks = response.data.drinks;
             });else this.drinks = {};
+        },
+        toggleImageFilter: function toggleImageFilter() {
+            this.filterImagesOut = !this.filterImagesOut;
         }
     },
     created: function created() {
@@ -38037,6 +38042,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             favouritesObjects = this.favouritesObjects;
             Vue.ls.set('favouritesObjects', favouritesObjects);
         })
+    },
+    computed: {
+        drinksFiltered: function drinksFiltered() {
+            if (this.filterImagesOut) {
+                return this.drinks.filter(function (el) {
+                    if (el.strDrinkThumb) {
+                        return true;
+                    } else return false;
+                });
+            } else return this.drinks;
+        }
     }
 
 });
@@ -38050,7 +38066,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Search alphabet")]), _vm._v(" "), _c('h5', [_vm._v("Contains " + _vm._s(_vm.$route.params.letter ? _vm.$route.params.letter : 'Alphabet'))])]), _vm._v(" "), _c('ul', {
+  }, [_c('h4', [_vm._v("Search alphabet")]), _vm._v(" "), _c('h5', [_vm._v("Contains " + _vm._s(_vm.$route.params.letter ? _vm.$route.params.letter : 'Alphabet'))]), _vm._v(" "), _c('a', {
+    staticClass: "waves-effect waves-light btn blue",
+    on: {
+      "click": _vm.toggleImageFilter
+    }
+  }, [_c('i', {
+    staticClass: "material-icons left"
+  }, [_vm._v("broken_image")]), _vm._v(_vm._s(this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'))])]), _vm._v(" "), _c('ul', {
     staticClass: "pagination"
   }, _vm._l((_vm.alphabet), function(letter) {
     return _c('li', {
@@ -38065,7 +38088,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("\n                " + _vm._s(letter) + "\n            ")])], 1)
-  })), _vm._v(" "), _vm._l((_vm.drinks), function(drink) {
+  })), _vm._v(" "), _vm._l((_vm.drinksFiltered), function(drink) {
     return _c('div', {
       staticClass: "col s12 m6 l4 xl3"
     }, [_c('drink-card', {
@@ -38147,6 +38170,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -38155,7 +38179,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             drinks: [],
             favouritesID: [],
-            favouritesObjects: []
+            favouritesObjects: [],
+            filterImagesOut: false
         };
     },
 
@@ -38178,9 +38203,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateDrinks: function updateDrinks() {
             var _this = this;
 
-            if (this.$route.params.base) __WEBPACK_IMPORTED_MODULE_0__models_FetchList__["a" /* default */].byBase(this.$route.params.base).then(function (response) {
-                return _this.drinks = response.data.drinks;
-            });else this.drinks = [];
+            if (this.$route.params.base) {
+                __WEBPACK_IMPORTED_MODULE_0__models_FetchList__["a" /* default */].byBase(this.$route.params.base).then(function (response) {
+                    return _this.drinks = response.data.drinks;
+                });
+            } else this.drinks = [];
+        },
+        toggleImageFilter: function toggleImageFilter() {
+            this.filterImagesOut = !this.filterImagesOut;
         }
     },
     created: function created() {
@@ -38221,6 +38251,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             favouritesObjects = this.favouritesObjects;
             Vue.ls.set('favouritesObjects', favouritesObjects);
         })
+    },
+    computed: {
+        drinksFiltered: function drinksFiltered() {
+            if (this.filterImagesOut) {
+                return this.drinks.filter(function (el) {
+                    if (el.strDrinkThumb) {
+                        return true;
+                    } else return false;
+                });
+            } else return this.drinks;
+        }
     }
 });
 
@@ -38233,7 +38274,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Browse")]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.$route.params.base ? _vm.spaceThis(_vm.$route.params.base) : 'All'))])]), _vm._v(" "), _vm._l((_vm.drinks), function(drink) {
+  }, [_c('h4', [_vm._v("Browse")]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.$route.params.base ? _vm.spaceThis(_vm.$route.params.base) : 'All'))]), _vm._v(" "), _c('a', {
+    staticClass: "waves-effect waves-light btn blue",
+    on: {
+      "click": _vm.toggleImageFilter
+    }
+  }, [_c('i', {
+    staticClass: "material-icons left"
+  }, [_vm._v("broken_image")]), _vm._v(_vm._s(this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'))])]), _vm._v(" "), _vm._l((_vm.drinksFiltered), function(drink) {
     return _c('div', {
       staticClass: "col s12 m6 l4 xl3 drink-container"
     }, [_c('drink-card', {
@@ -38314,6 +38362,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -38322,7 +38371,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             drinks: [],
             favouritesID: [],
-            favouritesObjects: []
+            favouritesObjects: [],
+            filterImagesOut: false
         };
     },
 
@@ -38348,6 +38398,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.$route.params.base) __WEBPACK_IMPORTED_MODULE_0__models_FetchList__["a" /* default */].byBase(this.$route.params.base).then(function (response) {
                 return _this.drinks = response.data.drinks;
             });else this.drinks = [];
+        },
+        toggleImageFilter: function toggleImageFilter() {
+            this.filterImagesOut = !this.filterImagesOut;
         }
     },
     created: function created() {
@@ -38388,6 +38441,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             favouritesObjects = this.favouritesObjects;
             Vue.ls.set('favouritesObjects', favouritesObjects);
         })
+    },
+    computed: {
+        drinksFiltered: function drinksFiltered() {
+            if (this.filterImagesOut) {
+                return this.drinks.filter(function (el) {
+                    if (el.strDrinkThumb) {
+                        return true;
+                    } else return false;
+                });
+            } else return this.drinks;
+        }
     }
 });
 
@@ -38398,7 +38462,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"
-  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.favouritesObjects), function(drink) {
+  }, [_c('div', {
+    staticClass: "col s12 m12"
+  }, [_c('h4', [_vm._v("Favorite Drinks")]), _vm._v(" "), _c('a', {
+    staticClass: "waves-effect waves-light btn blue",
+    on: {
+      "click": _vm.toggleImageFilter
+    }
+  }, [_c('i', {
+    staticClass: "material-icons left"
+  }, [_vm._v("broken_image")]), _vm._v(_vm._s(this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'))])]), _vm._v(" "), _vm._l((_vm.drinksFiltered), function(drink) {
     return _c('div', {
       staticClass: "col s12 m6 l4 xl3 drink-container"
     }, [_c('drink-card', {
@@ -38412,11 +38485,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })], 1)
   })], 2)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Favorite Drinks")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -39960,6 +40029,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -39970,7 +40040,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             ingredients: {},
             drinks: [],
             favouritesID: [],
-            favouritesObjects: []
+            favouritesObjects: [],
+            filterImagesOut: false
         };
     },
 
@@ -40006,6 +40077,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.$route.params.ingredient) __WEBPACK_IMPORTED_MODULE_1__models_FetchList__["a" /* default */].byIngredient(this.$route.params.ingredient).then(function (response) {
                 return _this2.drinks = response.data.drinks;
             });else this.drinks = [];
+        },
+        toggleImageFilter: function toggleImageFilter() {
+            this.filterImagesOut = !this.filterImagesOut;
         }
     },
     created: function created() {
@@ -40047,6 +40121,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             favouritesObjects = this.favouritesObjects;
             Vue.ls.set('favouritesObjects', favouritesObjects);
         })
+    },
+    computed: {
+        drinksFiltered: function drinksFiltered() {
+            if (this.filterImagesOut) {
+                return this.drinks.filter(function (el) {
+                    if (el.strDrinkThumb) {
+                        return true;
+                    } else return false;
+                });
+            } else return this.drinks;
+        }
     }
 });
 
@@ -40059,7 +40144,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Browse")]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.$route.params.ingredient ? _vm.spaceThis(_vm.$route.params.ingredient) : 'All'))])]), _vm._v(" "), _c('ul', {
+  }, [_c('h4', [_vm._v("Browse")]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.$route.params.ingredient ? _vm.spaceThis(_vm.$route.params.ingredient) : 'All'))]), _vm._v(" "), _c('a', {
+    staticClass: "waves-effect waves-light btn blue",
+    on: {
+      "click": _vm.toggleImageFilter
+    }
+  }, [_c('i', {
+    staticClass: "material-icons left"
+  }, [_vm._v("broken_image")]), _vm._v(_vm._s(this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'))])]), _vm._v(" "), _c('ul', {
     staticClass: "pagination"
   }, _vm._l((_vm.ingredients), function(ingredient) {
     return _c('li', {
@@ -40074,7 +40166,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("\n                " + _vm._s(ingredient.strIngredient1) + "\n            ")])], 1)
-  })), _vm._v(" "), _vm._l((_vm.drinks), function(drink) {
+  })), _vm._v(" "), _vm._l((_vm.drinksFiltered), function(drink) {
     return _c('div', {
       staticClass: "col s12 m6 l4 xl3 drink-container"
     }, [_c('drink-card', {
@@ -40187,16 +40279,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            drinks: {},
+            drinks: [],
             searchString: '',
             favouritesID: [],
-            favouritesObjects: []
+            favouritesObjects: [],
+            filterImagesOut: false
         };
     },
 
@@ -40219,19 +40313,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.searchString) __WEBPACK_IMPORTED_MODULE_0__models_FetchList__["a" /* default */].byLetter(this.searchString).then(function (response) {
                 return _this.drinks = response.data.drinks;
             });else this.drinks = {};
+        },
+        toggleImageFilter: function toggleImageFilter() {
+            this.filterImagesOut = !this.filterImagesOut;
         }
     },
     created: function created() {
-        // this.assignAlphabet();
         this.updateDrinks();
         this.favouritesID = favouritesID;
         this.favouritesObjects = favouritesObjects;
     },
 
     watch: {
-        '$route': function $route(to, from) {
-            this.updateDrinks();
-        },
         searchString: function searchString() {
             this.updateDrinks();
         },
@@ -40263,6 +40356,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             favouritesObjects = this.favouritesObjects;
             Vue.ls.set('favouritesObjects', favouritesObjects);
         })
+    },
+    computed: {
+        drinksFiltered: function drinksFiltered() {
+            if (this.filterImagesOut) {
+                return this.drinks.filter(function (el) {
+                    if (el.strDrinkThumb) {
+                        return true;
+                    } else return false;
+                });
+            } else return this.drinks;
+        }
     }
 
 });
@@ -40276,7 +40380,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Search")]), _vm._v(" "), (this.searchString) ? _c('h5', [_vm._v("Contains " + _vm._s(this.searchString))]) : _vm._e(), _vm._v(" "), _c('div', {
+  }, [_c('h4', [_vm._v("Search")]), _vm._v(" "), (this.searchString) ? _c('h5', [_vm._v("Contains " + _vm._s(this.searchString))]) : _vm._e(), _vm._v(" "), _c('a', {
+    staticClass: "waves-effect waves-light btn blue",
+    on: {
+      "click": _vm.toggleImageFilter
+    }
+  }, [_c('i', {
+    staticClass: "material-icons left"
+  }, [_vm._v("broken_image")]), _vm._v(_vm._s(this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'))]), _vm._v(" "), _c('div', {
     staticClass: "input-field"
   }, [_c('i', {
     staticClass: "material-icons prefix"
@@ -40301,8 +40412,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.searchString = $event.target.value
       }
     }
-  }), _vm._v(" "), _c('label', [_vm._v("Search")])])]), _vm._v(" "), _vm._l((_vm.drinks), function(drink) {
-    return _c('div', {
+  }), _vm._v(" "), _c('label', [_vm._v("Search")])])]), _vm._v(" "), _vm._l((_vm.drinksFiltered), function(drink) {
+    return (_vm.drinks) ? _c('div', {
       staticClass: "col s12 m6 l4 xl3"
     }, [_c('drink-card', {
       attrs: {
@@ -40313,7 +40424,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "fave": _vm.addFavourite,
         "unfave": _vm.removeFavourite
       }
-    })], 1)
+    })], 1) : _vm._e()
   })], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true

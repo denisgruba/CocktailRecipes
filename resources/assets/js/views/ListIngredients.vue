@@ -3,6 +3,7 @@
         <div class="col s12 m12">
             <h4>Browse</h4>
             <h5>{{$route.params.ingredient ? spaceThis($route.params.ingredient) : 'All'}}</h5>
+            <a class="waves-effect waves-light btn blue" @click="toggleImageFilter"><i class="material-icons left">broken_image</i>{{this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'}}</a>
         </div>
         <ul class="pagination">
             <li v-for="ingredient in ingredients" :class="$route.params.ingredient == underscoreThis(ingredient.strIngredient1) ? 'active' : 'waves-effect'">
@@ -11,7 +12,7 @@
                 </router-link>
             </li>
         </ul>
-        <div v-for="drink in drinks" class="col s12 m6 l4 xl3 drink-container">
+        <div v-for="drink in drinksFiltered" class="col s12 m6 l4 xl3 drink-container">
             <drink-card :drink="drink" :favs="favouritesID" @fave="addFavourite" @unfave="removeFavourite"></drink-card>
         </div>
     </div>
@@ -27,7 +28,8 @@ export default {
             ingredients: {},
             drinks: [],
             favouritesID: [],
-            favouritesObjects: []
+            favouritesObjects: [],
+            filterImagesOut: false,
         }
     },
     methods: {
@@ -59,6 +61,9 @@ export default {
                     .then(response => this.drinks = response.data.drinks);
             else
                 this.drinks = [];
+        },
+        toggleImageFilter () {
+            this.filterImagesOut=!this.filterImagesOut;
         }
     },
     created() {
@@ -78,6 +83,17 @@ export default {
         favouritesObjects () {
             favouritesObjects = this.favouritesObjects;
             Vue.ls.set('favouritesObjects', favouritesObjects);
+        }
+    },
+    computed: {
+        drinksFiltered: function () {
+            if(this.filterImagesOut){
+                return this.drinks.filter( function(el) {
+                    if(el.strDrinkThumb){
+                        return true
+                    } else return false;
+                });
+            } else return this.drinks;
         }
     }
 }
