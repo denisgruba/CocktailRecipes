@@ -35,7 +35,7 @@ export default {
             });
         },
         updateDrinks () {
-            for(var i = 0; i < 8; i++){
+            for(var i = 0; i < 12; i++){
                 Base.random()
                     .then(response => this.drinks.push(response.data.drinks));
             }

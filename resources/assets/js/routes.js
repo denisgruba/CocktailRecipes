@@ -49,5 +49,9 @@ let routes = [
 
 export default new VueRouter({
     routes,
-    linkActiveClass: 'active'
+    mode: 'history',
+    linkActiveClass: 'active',
+    scrollBehavior (to, from, savedPosition) {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
 });

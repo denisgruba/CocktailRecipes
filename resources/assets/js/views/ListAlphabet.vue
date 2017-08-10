@@ -3,7 +3,9 @@
         <div class="col s12 m12">
             <h4>Search alphabet</h4>
             <h5>Contains {{$route.params.letter ? $route.params.letter : 'Alphabet'}}</h5>
-            <a class="waves-effect waves-light btn blue" @click="toggleImageFilter"><i class="material-icons left">broken_image</i>{{this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'}}</a>
+            <div class="fixed-action-btn fab-btn-left-bottom">
+                <a @click="toggleImageFilter" class="btn-floating btn-large waves-effect waves-light blue tooltipped" data-position="right" data-delay="50" data-tooltip="Toggle Display of Missing Images"><i class="material-icons">broken_image</i></a>
+            </div>
         </div>
         <ul class="pagination">
             <li v-for="letter in alphabet" :class="$route.params.letter == letter ? 'active' : 'waves-effect'">

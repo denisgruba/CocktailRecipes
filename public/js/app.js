@@ -13805,9 +13805,7 @@ window.url = "http://www.thecocktaildb.com/api/json/v1/1/";
 // }
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_ls___default.a, {
-    namespace: 'vuejs__'
-});
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_ls___default.a, { namespace: 'vuejs__' });
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -13815,7 +13813,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_
 * or customize the JavaScript scaffolding to fit your unique needs.
 */
 
-// Vue.component('test', require('./components/Test.vue'));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('NavigationBar', __webpack_require__(71));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('DrinkCard', __webpack_require__(74));
 
@@ -37797,7 +37794,11 @@ var routes = [{
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: routes,
-    linkActiveClass: 'active'
+    mode: 'history',
+    linkActiveClass: 'active',
+    scrollBehavior: function scrollBehavior(to, from, savedPosition) {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
 }));
 
 /***/ }),
@@ -37887,7 +37888,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateDrinks: function updateDrinks() {
             var _this = this;
 
-            for (var i = 0; i < 8; i++) {
+            for (var i = 0; i < 12; i++) {
                 __WEBPACK_IMPORTED_MODULE_0__models_Base__["a" /* default */].random().then(function (response) {
                     return _this.drinks.push(response.data.drinks);
                 });
@@ -37976,6 +37977,8 @@ if (false) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(2);
+//
+//
 //
 //
 //
@@ -38106,14 +38109,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Search alphabet")]), _vm._v(" "), _c('h5', [_vm._v("Contains " + _vm._s(_vm.$route.params.letter ? _vm.$route.params.letter : 'Alphabet'))]), _vm._v(" "), _c('a', {
-    staticClass: "waves-effect waves-light btn blue",
+  }, [_c('h4', [_vm._v("Search alphabet")]), _vm._v(" "), _c('h5', [_vm._v("Contains " + _vm._s(_vm.$route.params.letter ? _vm.$route.params.letter : 'Alphabet'))]), _vm._v(" "), _c('div', {
+    staticClass: "fixed-action-btn fab-btn-left-bottom"
+  }, [_c('a', {
+    staticClass: "btn-floating btn-large waves-effect waves-light blue tooltipped",
+    attrs: {
+      "data-position": "right",
+      "data-delay": "50",
+      "data-tooltip": "Toggle Display of Missing Images"
+    },
     on: {
       "click": _vm.toggleImageFilter
     }
   }, [_c('i', {
-    staticClass: "material-icons left"
-  }, [_vm._v("broken_image")]), _vm._v(_vm._s(this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'))])]), _vm._v(" "), _c('ul', {
+    staticClass: "material-icons"
+  }, [_vm._v("broken_image")])])])]), _vm._v(" "), _c('ul', {
     staticClass: "pagination"
   }, _vm._l((_vm.alphabet), function(letter) {
     return _c('li', {
@@ -38198,6 +38208,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(2);
+//
+//
 //
 //
 //
@@ -38316,14 +38328,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Search")]), _vm._v(" "), (this.searchString) ? _c('h5', [_vm._v("Contains " + _vm._s(this.searchString))]) : _vm._e(), _vm._v(" "), _c('a', {
-    staticClass: "waves-effect waves-light btn blue",
+  }, [_c('h4', [_vm._v("Search By Name")]), _vm._v(" "), (this.searchString) ? _c('h5', [_vm._v("Name Contains \"" + _vm._s(this.searchString) + "\"")]) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "fixed-action-btn fab-btn-left-bottom"
+  }, [_c('a', {
+    staticClass: "btn-floating btn-large waves-effect waves-light blue tooltipped",
+    attrs: {
+      "data-position": "right",
+      "data-delay": "50",
+      "data-tooltip": "Toggle Display of Missing Images"
+    },
     on: {
       "click": _vm.toggleImageFilter
     }
   }, [_c('i', {
-    staticClass: "material-icons left"
-  }, [_vm._v("broken_image")]), _vm._v(_vm._s(this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'))]), _vm._v(" "), _c('div', {
+    staticClass: "material-icons"
+  }, [_vm._v("broken_image")])])]), _vm._v(" "), _c('div', {
     staticClass: "input-field"
   }, [_c('i', {
     staticClass: "material-icons prefix"
@@ -38418,6 +38437,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(2);
+//
+//
 //
 //
 //
@@ -38534,14 +38555,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Browse")]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.$route.params.base ? _vm.spaceThis(_vm.$route.params.base) : 'All'))]), _vm._v(" "), _c('a', {
-    staticClass: "waves-effect waves-light btn blue",
+  }, [_c('h4', [_vm._v("Browse")]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.$route.params.base ? _vm.spaceThis(_vm.$route.params.base) : 'All'))]), _vm._v(" "), _c('div', {
+    staticClass: "fixed-action-btn fab-btn-left-bottom"
+  }, [_c('a', {
+    staticClass: "btn-floating btn-large waves-effect waves-light blue tooltipped",
+    attrs: {
+      "data-position": "right",
+      "data-delay": "50",
+      "data-tooltip": "Toggle Display of Missing Images"
+    },
     on: {
       "click": _vm.toggleImageFilter
     }
   }, [_c('i', {
-    staticClass: "material-icons left"
-  }, [_vm._v("broken_image")]), _vm._v(_vm._s(this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'))])]), _vm._v(" "), _vm._l((_vm.drinksFiltered), function(drink) {
+    staticClass: "material-icons"
+  }, [_vm._v("broken_image")])])])]), _vm._v(" "), _vm._l((_vm.drinksFiltered), function(drink) {
     return _c('div', {
       staticClass: "col s12 m6 l4 xl3 drink-container"
     }, [_c('drink-card', {
@@ -38572,6 +38600,8 @@ if (false) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_Ingredients__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_FetchList__ = __webpack_require__(2);
+//
+//
 //
 //
 //
@@ -38732,14 +38762,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Browse")]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.$route.params.ingredient ? _vm.spaceThis(_vm.$route.params.ingredient) : 'All'))]), _vm._v(" "), _c('a', {
-    staticClass: "waves-effect waves-light btn blue",
+  }, [_c('h4', [_vm._v("Browse")]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.$route.params.ingredient ? _vm.spaceThis(_vm.$route.params.ingredient) : 'All'))]), _vm._v(" "), _c('div', {
+    staticClass: "fixed-action-btn fab-btn-left-bottom"
+  }, [_c('a', {
+    staticClass: "btn-floating btn-large waves-effect waves-light blue tooltipped",
+    attrs: {
+      "data-position": "right",
+      "data-delay": "50",
+      "data-tooltip": "Toggle Display of Missing Images"
+    },
     on: {
       "click": _vm.toggleImageFilter
     }
   }, [_c('i', {
-    staticClass: "material-icons left"
-  }, [_vm._v("broken_image")]), _vm._v(_vm._s(this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'))])]), _vm._v(" "), _c('ul', {
+    staticClass: "material-icons"
+  }, [_vm._v("broken_image")])])])]), _vm._v(" "), _c('ul', {
     staticClass: "pagination"
   }, _vm._l((_vm.ingredients), function(ingredient) {
     return _c('li', {
@@ -38824,6 +38861,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(2);
+//
+//
 //
 //
 //
@@ -38937,14 +38976,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Favorite Drinks")]), _vm._v(" "), _c('a', {
-    staticClass: "waves-effect waves-light btn blue",
+  }, [_c('h4', [_vm._v("Favorite Drinks")]), _vm._v(" "), _c('div', {
+    staticClass: "fixed-action-btn fab-btn-left-bottom"
+  }, [_c('a', {
+    staticClass: "btn-floating btn-large waves-effect waves-light blue tooltipped",
+    attrs: {
+      "data-position": "right",
+      "data-delay": "50",
+      "data-tooltip": "Toggle Display of Missing Images"
+    },
     on: {
       "click": _vm.toggleImageFilter
     }
   }, [_c('i', {
-    staticClass: "material-icons left"
-  }, [_vm._v("broken_image")]), _vm._v(_vm._s(this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'))])]), _vm._v(" "), _vm._l((_vm.drinksFiltered), function(drink) {
+    staticClass: "material-icons"
+  }, [_vm._v("broken_image")])])])]), _vm._v(" "), _vm._l((_vm.drinksFiltered), function(drink) {
     return _c('div', {
       staticClass: "col s12 m6 l4 xl3 drink-container"
     }, [_c('drink-card', {
@@ -40159,12 +40205,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -40231,12 +40271,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "tag": "li"
     }
   }, [_c('a', [_vm._v("Home")])]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/List/ByIngredient",
-      "exact": "",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("List Ingredients")])]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/Search",
       "exact": "",

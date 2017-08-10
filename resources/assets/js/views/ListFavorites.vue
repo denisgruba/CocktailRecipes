@@ -2,7 +2,9 @@
     <div class="row">
         <div class="col s12 m12">
             <h4>Favorite Drinks</h4>
-            <a class="waves-effect waves-light btn blue" @click="toggleImageFilter"><i class="material-icons left">broken_image</i>{{this.filterImagesOut ? 'Show Missing Images' : 'Hide Missing Images'}}</a>
+            <div class="fixed-action-btn fab-btn-left-bottom">
+                <a @click="toggleImageFilter" class="btn-floating btn-large waves-effect waves-light blue tooltipped" data-position="right" data-delay="50" data-tooltip="Toggle Display of Missing Images"><i class="material-icons">broken_image</i></a>
+            </div>
         </div>
         <div v-for="drink in drinksFiltered" class="col s12 m6 l4 xl3 drink-container">
             <drink-card :drink="drink" :favs="favouritesID" @fave="addFavourite" @unfave="removeFavourite"></drink-card>

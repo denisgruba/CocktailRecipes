@@ -24,9 +24,7 @@ window.url = "http://www.thecocktaildb.com/api/json/v1/1/";
 // }
 
 Vue.use(VueRouter);
-Vue.use(VueLocalStorage, {
-    namespace: 'vuejs__'
-});
+Vue.use(VueLocalStorage, {namespace: 'vuejs__'});
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to
@@ -34,8 +32,6 @@ Vue.use(VueLocalStorage, {
 * or customize the JavaScript scaffolding to fit your unique needs.
 */
 
-
-// Vue.component('test', require('./components/Test.vue'));
 Vue.component('NavigationBar', require('./components/NavigationBar.vue'));
 Vue.component('DrinkCard', require('./components/DrinkCard.vue'));
 

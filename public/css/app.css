@@ -9919,6 +9919,12 @@ footer {
   }
 }
 
+.fab-btn-left-bottom {
+  z-index: 1001;
+  left: 45px;
+  bottom: 45px;
+}
+
 body {
   background-color: #fafafa;
 }
