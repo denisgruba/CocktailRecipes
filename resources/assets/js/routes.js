@@ -16,6 +16,11 @@ let routes = [
         component: require('./views/ListAlphabet')
     },
     {
+        name: 'Search',
+        path: '/Search',
+        component: require('./views/Search')
+    },
+    {
         name: 'ListBase',
         path: '/List/ByBase/:base',
         component: require('./views/ListBase')

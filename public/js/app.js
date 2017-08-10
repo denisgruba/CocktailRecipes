@@ -37730,6 +37730,10 @@ var routes = [{
     path: '/List/ByAlphabet/:letter',
     component: __webpack_require__(12)
 }, {
+    name: 'Search',
+    path: '/Search',
+    component: __webpack_require__(78)
+}, {
     name: 'ListBase',
     path: '/List/ByBase/:base',
     component: __webpack_require__(48)
@@ -39692,7 +39696,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('a', [_vm._v("List Ingredients")])]), _vm._v(" "), _c('router-link', {
     attrs: {
-      "to": "/List",
+      "to": "/Search",
       "exact": "",
       "tag": "li"
     }
@@ -40118,6 +40122,207 @@ var Ingredients = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (Ingredients);
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(79),
+  /* template */
+  __webpack_require__(80),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/DenisGruba/Sites/Ocasta-test/resources/assets/js/views/Search.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Search.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ff7ce744", Component.options)
+  } else {
+    hotAPI.reload("data-v-ff7ce744", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            drinks: {},
+            searchString: '',
+            favouritesID: [],
+            favouritesObjects: []
+        };
+    },
+
+    methods: {
+        addFavourite: function addFavourite(object) {
+            this.favouritesID.push(object.idDrink);
+            this.favouritesObjects.push(object);
+        },
+        removeFavourite: function removeFavourite(object) {
+            this.favouritesID.splice(this.favouritesID.indexOf(object.idDrink), 1);
+            this.favouritesObjects = this.favouritesObjects.filter(function (el) {
+                if (el.idDrink !== object.idDrink) {
+                    return true;
+                } else return false;
+            });
+        },
+        updateDrinks: function updateDrinks() {
+            var _this = this;
+
+            if (this.searchString) __WEBPACK_IMPORTED_MODULE_0__models_FetchList__["a" /* default */].byLetter(this.searchString).then(function (response) {
+                return _this.drinks = response.data.drinks;
+            });else this.drinks = {};
+        }
+    },
+    created: function created() {
+        // this.assignAlphabet();
+        this.updateDrinks();
+        this.favouritesID = favouritesID;
+        this.favouritesObjects = favouritesObjects;
+    },
+
+    watch: {
+        '$route': function $route(to, from) {
+            this.updateDrinks();
+        },
+        searchString: function searchString() {
+            this.updateDrinks();
+        },
+        favouritesID: function (_favouritesID) {
+            function favouritesID() {
+                return _favouritesID.apply(this, arguments);
+            }
+
+            favouritesID.toString = function () {
+                return _favouritesID.toString();
+            };
+
+            return favouritesID;
+        }(function () {
+            favouritesID = this.favouritesID;
+            Vue.ls.set('favouritesID', favouritesID);
+        }),
+        favouritesObjects: function (_favouritesObjects) {
+            function favouritesObjects() {
+                return _favouritesObjects.apply(this, arguments);
+            }
+
+            favouritesObjects.toString = function () {
+                return _favouritesObjects.toString();
+            };
+
+            return favouritesObjects;
+        }(function () {
+            favouritesObjects = this.favouritesObjects;
+            Vue.ls.set('favouritesObjects', favouritesObjects);
+        })
+    }
+
+});
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col s12 m12"
+  }, [_c('h4', [_vm._v("Search")]), _vm._v(" "), (this.searchString) ? _c('h5', [_vm._v("Contains " + _vm._s(this.searchString))]) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "input-field"
+  }, [_c('i', {
+    staticClass: "material-icons prefix"
+  }, [_vm._v("search")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.searchString),
+      expression: "searchString"
+    }],
+    staticClass: "validate",
+    attrs: {
+      "type": "text",
+      "id": "searchString"
+    },
+    domProps: {
+      "value": (_vm.searchString)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.searchString = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('label', [_vm._v("Search")])])]), _vm._v(" "), _vm._l((_vm.drinks), function(drink) {
+    return _c('div', {
+      staticClass: "col s12 m6 l4 xl3"
+    }, [_c('drink-card', {
+      attrs: {
+        "drink": drink,
+        "favs": _vm.favouritesID
+      },
+      on: {
+        "fave": _vm.addFavourite,
+        "unfave": _vm.removeFavourite
+      }
+    })], 1)
+  })], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-ff7ce744", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
