@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(4);
+var bind = __webpack_require__(5);
 var isBuffer = __webpack_require__(26);
 
 /*global toString:true*/
@@ -10754,10 +10754,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(5);
+    adapter = __webpack_require__(6);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(5);
+    adapter = __webpack_require__(6);
   }
   return adapter;
 }
@@ -10832,6 +10832,40 @@ module.exports = defaults;
 
 /***/ }),
 /* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var FetchList = function () {
+        function FetchList() {
+                _classCallCheck(this, FetchList);
+        }
+
+        _createClass(FetchList, null, [{
+                key: 'byBase',
+                value: function byBase(base) {
+                        return axios.get(url + 'filter.php?a=' + base);
+                }
+        }, {
+                key: 'byLetter',
+                value: function byLetter(letter) {
+                        return axios.get(url + 'filter.php?a=' + base);
+                }
+        }, {
+                key: 'all',
+                value: function all() {}
+        }]);
+
+        return FetchList;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (FetchList);
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10849,7 +10883,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10860,7 +10894,7 @@ var settle = __webpack_require__(30);
 var buildURL = __webpack_require__(32);
 var parseHeaders = __webpack_require__(33);
 var isURLSameOrigin = __webpack_require__(34);
-var createError = __webpack_require__(6);
+var createError = __webpack_require__(7);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(35);
 
 module.exports = function xhrAdapter(config) {
@@ -11036,7 +11070,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11061,7 +11095,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11073,7 +11107,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11099,7 +11133,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13611,7 +13645,7 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13637,7 +13671,7 @@ var Base = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Base);
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -13681,7 +13715,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 /*
@@ -13763,7 +13797,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -13984,45 +14018,11 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 14 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var FetchList = function () {
-        function FetchList() {
-                _classCallCheck(this, FetchList);
-        }
-
-        _createClass(FetchList, null, [{
-                key: 'byBase',
-                value: function byBase(base) {
-                        return axios.get(url + 'filter.php?a=' + base);
-                }
-        }, {
-                key: 'byLetter',
-                value: function byLetter(letter) {
-                        return axios.get(url + 'filter.php?a=' + base);
-                }
-        }, {
-                key: 'all',
-                value: function all() {}
-        }]);
-
-        return FetchList;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (FetchList);
-
-/***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(16);
-module.exports = __webpack_require__(69);
+module.exports = __webpack_require__(72);
 
 
 /***/ }),
@@ -14035,9 +14035,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_ls__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_ls__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_ls___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_ls__);
 window.$ = window.jQuery = __webpack_require__(2);
 __webpack_require__(17);
@@ -14076,8 +14076,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_
 */
 
 // Vue.component('test', require('./components/Test.vue'));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('NavigationBar', __webpack_require__(63));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('DrinkCard', __webpack_require__(66));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('NavigationBar', __webpack_require__(66));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('DrinkCard', __webpack_require__(69));
 
 var myApp = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
@@ -36960,7 +36960,7 @@ module.exports = __webpack_require__(25);
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(4);
+var bind = __webpack_require__(5);
 var Axios = __webpack_require__(27);
 var defaults = __webpack_require__(3);
 
@@ -36995,9 +36995,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(8);
+axios.Cancel = __webpack_require__(9);
 axios.CancelToken = __webpack_require__(42);
-axios.isCancel = __webpack_require__(7);
+axios.isCancel = __webpack_require__(8);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -37347,7 +37347,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(6);
+var createError = __webpack_require__(7);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -37766,7 +37766,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(39);
-var isCancel = __webpack_require__(7);
+var isCancel = __webpack_require__(8);
 var defaults = __webpack_require__(3);
 
 /**
@@ -37919,7 +37919,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(8);
+var Cancel = __webpack_require__(9);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -38015,7 +38015,7 @@ module.exports = function spread(callback) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(10);
 
 
 var routes = [{
@@ -38024,11 +38024,11 @@ var routes = [{
 }, {
     name: 'List',
     path: '/List',
-    component: __webpack_require__(11)
+    component: __webpack_require__(12)
 }, {
     name: 'ListAlphabet',
     path: '/List/ByAlphabet/:letter',
-    component: __webpack_require__(11)
+    component: __webpack_require__(12)
 }, {
     name: 'ListBase',
     path: '/List/ByBase/:base',
@@ -38036,11 +38036,11 @@ var routes = [{
 }, {
     name: 'ListFavorites',
     path: '/List/Favorites',
-    component: __webpack_require__(73)
+    component: __webpack_require__(56)
 }, {
     name: 'ShowSingle',
     path: '/Show/:id',
-    component: __webpack_require__(56)
+    component: __webpack_require__(59)
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -38094,7 +38094,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_Base__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_Base__ = __webpack_require__(11);
 //
 //
 //
@@ -38153,7 +38153,7 @@ var content = __webpack_require__(49);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(13)("b2d6ed20", content, false);
+var update = __webpack_require__(14)("b2d6ed20", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -38172,7 +38172,7 @@ if(false) {
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(12)(undefined);
+exports = module.exports = __webpack_require__(13)(undefined);
 // imports
 
 
@@ -38221,7 +38221,7 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(4);
 //
 //
 //
@@ -38397,7 +38397,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(4);
 //
 //
 //
@@ -38498,7 +38498,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col s12 m12"
   }, [_c('h4', [_vm._v("Browse")]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.$route.params.base ? _vm.spaceThis(_vm.$route.params.base) : 'All'))])]), _vm._v(" "), _vm._l((_vm.drinks), function(drink) {
     return _c('div', {
-      staticClass: "col s12 m6 l4 xl3"
+      staticClass: "col s12 m6 l4 xl3 drink-container"
     }, [_c('drink-card', {
       attrs: {
         "drink": drink,
@@ -38524,15 +38524,184 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(57),
+  /* template */
+  __webpack_require__(58),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/DenisGruba/Sites/Ocasta-test/resources/assets/js/views/ListFavorites.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] ListFavorites.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1a0ec393", Component.options)
+  } else {
+    hotAPI.reload("data-v-1a0ec393", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            drinks: {},
+            favouritesID: [],
+            favouritesObjects: []
+        };
+    },
+
+    methods: {
+        addFavourite: function addFavourite(object) {
+            this.favouritesID.push(object.idDrink);
+            this.favouritesObjects.push(object);
+        },
+        removeFavourite: function removeFavourite(object) {
+            this.favouritesID.splice(this.favouritesID.indexOf(object.idDrink), 1);
+            this.favouritesObjects = this.favouritesObjects.filter(function (el) {
+                if (el.idDrink !== object.idDrink) {
+                    return true;
+                } else return false;
+            });
+        },
+        spaceThis: function spaceThis(text) {
+            return text.replace("_", " ");
+        },
+        updateDrinks: function updateDrinks() {
+            var _this = this;
+
+            if (this.$route.params.base) __WEBPACK_IMPORTED_MODULE_0__models_FetchList__["a" /* default */].byBase(this.$route.params.base).then(function (response) {
+                return _this.drinks = response.data.drinks;
+            });else this.drinks = {};
+        }
+    },
+    created: function created() {
+        this.updateDrinks();
+        this.favouritesID = favouritesID;
+        this.favouritesObjects = favouritesObjects;
+    },
+
+    watch: {
+        '$route': function $route(to, from) {
+            this.updateDrinks();
+        },
+        favouritesID: function (_favouritesID) {
+            function favouritesID() {
+                return _favouritesID.apply(this, arguments);
+            }
+
+            favouritesID.toString = function () {
+                return _favouritesID.toString();
+            };
+
+            return favouritesID;
+        }(function () {
+            favouritesID = this.favouritesID;
+            Vue.ls.set('favouritesID', favouritesID);
+        }),
+        favouritesObjects: function (_favouritesObjects) {
+            function favouritesObjects() {
+                return _favouritesObjects.apply(this, arguments);
+            }
+
+            favouritesObjects.toString = function () {
+                return _favouritesObjects.toString();
+            };
+
+            return favouritesObjects;
+        }(function () {
+            favouritesObjects = this.favouritesObjects;
+            Vue.ls.set('favouritesObjects', favouritesObjects);
+        })
+    }
+});
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.favouritesObjects), function(drink) {
+    return _c('div', {
+      staticClass: "col s12 m6 l4 xl3 drink-container"
+    }, [_c('drink-card', {
+      attrs: {
+        "drink": drink,
+        "favs": _vm.favouritesID
+      },
+      on: {
+        "fave": _vm.addFavourite,
+        "unfave": _vm.removeFavourite
+      }
+    })], 1)
+  })], 2)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col s12 m12"
+  }, [_c('h4', [_vm._v("Favorite Drinks")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1a0ec393", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(57)
+  __webpack_require__(60)
 }
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(59),
+  __webpack_require__(62),
   /* template */
-  __webpack_require__(61),
+  __webpack_require__(64),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -38564,17 +38733,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 57 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(58);
+var content = __webpack_require__(61);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(13)("7dc5a049", content, false);
+var update = __webpack_require__(14)("7dc5a049", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -38590,10 +38759,10 @@ if(false) {
 }
 
 /***/ }),
-/* 58 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(12)(undefined);
+exports = module.exports = __webpack_require__(13)(undefined);
 // imports
 
 
@@ -38604,12 +38773,12 @@ exports.push([module.i, "\nh6{\n    font-size: 1.2rem;\n}\n", ""]);
 
 
 /***/ }),
-/* 59 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchSingle__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchSingle__ = __webpack_require__(63);
 //
 //
 //
@@ -38766,7 +38935,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 60 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38792,7 +38961,7 @@ var FetchSingle = function () {
 /* harmony default export */ __webpack_exports__["a"] = (FetchSingle);
 
 /***/ }),
-/* 61 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -38854,7 +39023,7 @@ if (false) {
 }
 
 /***/ }),
-/* 62 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (global, factory) {
@@ -39283,15 +39452,15 @@ return VueLocalStorage;
 
 
 /***/ }),
-/* 63 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(64),
+  __webpack_require__(67),
   /* template */
-  __webpack_require__(65),
+  __webpack_require__(68),
   /* styles */
   null,
   /* scopeId */
@@ -39323,12 +39492,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 64 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_Base__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_Base__ = __webpack_require__(11);
 //
 //
 //
@@ -39388,7 +39557,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 65 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -39468,15 +39637,15 @@ if (false) {
 }
 
 /***/ }),
-/* 66 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(67),
+  __webpack_require__(70),
   /* template */
-  __webpack_require__(68),
+  __webpack_require__(71),
   /* styles */
   null,
   /* scopeId */
@@ -39508,7 +39677,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 67 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39557,7 +39726,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 68 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -39613,182 +39782,10 @@ if (false) {
 }
 
 /***/ }),
-/* 69 */
+/* 72 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(74),
-  /* template */
-  __webpack_require__(75),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/DenisGruba/Sites/Ocasta-test/resources/assets/js/views/ListFavorites.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] ListFavorites.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1a0ec393", Component.options)
-  } else {
-    hotAPI.reload("data-v-1a0ec393", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 74 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(14);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            drinks: {},
-            favouritesID: [],
-            favouritesObjects: []
-        };
-    },
-
-    methods: {
-        addFavourite: function addFavourite(object) {
-            this.favouritesID.push(object.idDrink);
-            this.favouritesObjects.push(object);
-        },
-        removeFavourite: function removeFavourite(object) {
-            this.favouritesID.splice(this.favouritesID.indexOf(object.idDrink), 1);
-            this.favouritesObjects = this.favouritesObjects.filter(function (el) {
-                if (el.idDrink !== object.idDrink) {
-                    return true;
-                } else return false;
-            });
-        },
-        spaceThis: function spaceThis(text) {
-            return text.replace("_", " ");
-        },
-        updateDrinks: function updateDrinks() {
-            var _this = this;
-
-            if (this.$route.params.base) __WEBPACK_IMPORTED_MODULE_0__models_FetchList__["a" /* default */].byBase(this.$route.params.base).then(function (response) {
-                return _this.drinks = response.data.drinks;
-            });else this.drinks = {};
-        }
-    },
-    created: function created() {
-        this.updateDrinks();
-        this.favouritesID = favouritesID;
-        this.favouritesObjects = favouritesObjects;
-    },
-
-    watch: {
-        '$route': function $route(to, from) {
-            this.updateDrinks();
-        },
-        favouritesID: function (_favouritesID) {
-            function favouritesID() {
-                return _favouritesID.apply(this, arguments);
-            }
-
-            favouritesID.toString = function () {
-                return _favouritesID.toString();
-            };
-
-            return favouritesID;
-        }(function () {
-            favouritesID = this.favouritesID;
-            Vue.ls.set('favouritesID', favouritesID);
-        }),
-        favouritesObjects: function (_favouritesObjects) {
-            function favouritesObjects() {
-                return _favouritesObjects.apply(this, arguments);
-            }
-
-            favouritesObjects.toString = function () {
-                return _favouritesObjects.toString();
-            };
-
-            return favouritesObjects;
-        }(function () {
-            favouritesObjects = this.favouritesObjects;
-            Vue.ls.set('favouritesObjects', favouritesObjects);
-        })
-    }
-});
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.favouritesObjects), function(drink) {
-    return _c('div', {
-      staticClass: "col s12 m6 l4 xl3"
-    }, [_c('drink-card', {
-      attrs: {
-        "drink": drink,
-        "favs": _vm.favouritesID
-      },
-      on: {
-        "fave": _vm.addFavourite,
-        "unfave": _vm.removeFavourite
-      }
-    })], 1)
-  })], 2)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col s12 m12"
-  }, [_c('h4', [_vm._v("Favorite Drinks")])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-1a0ec393", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

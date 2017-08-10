@@ -4,7 +4,7 @@
             <h4>Browse</h4>
             <h5>{{$route.params.base ? spaceThis($route.params.base) : 'All'}}</h5>
         </div>
-        <div v-for="drink in drinks" class="col s12 m6 l4 xl3">
+        <div v-for="drink in drinks" class="col s12 m6 l4 xl3 drink-container">
             <drink-card :drink="drink" :favs="favouritesID" @fave="addFavourite" @unfave="removeFavourite"></drink-card>
         </div>
     </div>

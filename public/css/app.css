@@ -9897,6 +9897,24 @@ footer {
   cursor: pointer;
 }
 
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .drink-container:nth-child(2n+2) {
+    clear: left;
+  }
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+  .drink-container:nth-child(3n+2) {
+    clear: left;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .drink-container:nth-child(4n+2) {
+    clear: left;
+  }
+}
+
 body {
   background-color: #fafafa;
 }

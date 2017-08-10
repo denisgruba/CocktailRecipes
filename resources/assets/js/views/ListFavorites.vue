@@ -3,7 +3,7 @@
         <div class="col s12 m12">
             <h4>Favorite Drinks</h4>
         </div>
-        <div v-for="drink in favouritesObjects" class="col s12 m6 l4 xl3">
+        <div v-for="drink in favouritesObjects" class="col s12 m6 l4 xl3 drink-container">
             <drink-card :drink="drink" :favs="favouritesID" @fave="addFavourite" @unfave="removeFavourite"></drink-card>
         </div>
     </div>
