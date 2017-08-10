@@ -38956,16 +38956,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             drink: {},
-            favouritesID: []
+            favouritesID: [],
+            favouritesObjects: []
         };
     },
 
     methods: {
-        addFavourite: function addFavourite(id) {
-            this.favouritesID.push(id);
+        addFavourite: function addFavourite(object) {
+            this.favouritesID.push(object.idDrink);
+            this.favouritesObjects.push(object);
         },
-        removeFavourite: function removeFavourite(id) {
-            this.favouritesID.splice(this.favouritesID.indexOf(id), 1);
+        removeFavourite: function removeFavourite(object) {
+            this.favouritesID.splice(this.favouritesID.indexOf(object.idDrink), 1);
+            this.favouritesObjects = this.favouritesObjects.filter(function (el) {
+                if (el.idDrink !== object.idDrink) {
+                    return true;
+                } else return false;
+            });
         },
         updateDrink: function updateDrink() {
             var _this = this;
@@ -38981,6 +38988,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         this.updateDrink();
         this.favouritesID = favouritesID;
+        this.favouritesObjects = favouritesObjects;
     },
 
     watch: {
@@ -38999,6 +39007,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return favouritesID;
         }(function () {
             favouritesID = this.favouritesID;
+            Vue.ls.set('favouritesID', favouritesID);
+        }),
+        favouritesObjects: function (_favouritesObjects) {
+            function favouritesObjects() {
+                return _favouritesObjects.apply(this, arguments);
+            }
+
+            favouritesObjects.toString = function () {
+                return _favouritesObjects.toString();
+            };
+
+            return favouritesObjects;
+        }(function () {
+            favouritesObjects = this.favouritesObjects;
+            Vue.ls.set('favouritesObjects', favouritesObjects);
         })
     }
 });
@@ -39054,14 +39077,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "cursor-pointer",
     on: {
       "click": function($event) {
-        _vm.removeFavourite(_vm.drink.idDrink)
+        _vm.removeFavourite(_vm.drink)
       }
     }
   }, [_vm._v("Remove Favourite")]) : _c('a', {
     staticClass: "cursor-pointer",
     on: {
       "click": function($event) {
-        _vm.addFavourite(_vm.drink.idDrink)
+        _vm.addFavourite(_vm.drink)
       }
     }
   }, [_vm._v("Add Favourite")])])])]), _vm._v(" "), _c('div', {
