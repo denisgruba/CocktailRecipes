@@ -1,3 +1,7 @@
+/**
+ * Displays The list of drinks depending on whether they are alcoholic or not.
+ * Allows to filter out the Drinks that have no image available.
+ */
 <template @addFavourite="console.log('tet')">
     <div class="row">
         <div class="col s12 m12">

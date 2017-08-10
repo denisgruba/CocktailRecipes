@@ -1,3 +1,6 @@
+/**
+ * Provides list of alcohols filtered by different API requests.
+ */
 class FetchList {
     static byBase(base) {
             return axios.get(url+'filter.php?a='+base);

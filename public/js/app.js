@@ -479,6 +479,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * Provides list of alcohols filtered by different API requests.
+ */
 var FetchList = function () {
         function FetchList() {
                 _classCallCheck(this, FetchList);
@@ -13655,6 +13658,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * Provides methods to get list of Alcohol categories.
+ * Provides method to pull random drink.
+ */
 var Base = function () {
         function Base() {
                 _classCallCheck(this, Base);
@@ -13779,11 +13786,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_ls__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_ls___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_ls__);
+/**
+ * Import jQuery and Materialize.js Framework. Only used for materialize.
+ */
+
 window.$ = window.jQuery = __webpack_require__(3);
 __webpack_require__(16);
 
 /**
-* Import Vue Component and Vue router
+* Import Vue Component and Vue router.
+* Axios supports Ajax requests with Vue.
+* Local Storage for Vue uses HTML5 Local Storage to keep the Liked objects.
 */
 
 
@@ -13792,6 +13805,11 @@ __webpack_require__(16);
 
 
 
+/**
+ * Assign Vue and Axios to window.
+ * Assign Favourites to Window to make it easier to catch variable between pages.
+ * Assign API url for easy access.
+ */
 window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
 window.axios = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
 
@@ -13800,29 +13818,22 @@ window.favouritesObjects = [];
 
 window.url = "http://www.thecocktaildb.com/api/json/v1/1/";
 
-// window.axios.defaults.headers.common = {
-//     'X-Requested-With' : 'XMLHttpRequest'
-// }
-
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_ls___default.a, { namespace: 'vuejs__' });
 
 /**
-* Next, we will create a fresh Vue application instance and attach it to
-* the page. Then, you may begin adding components to this application
-* or customize the JavaScript scaffolding to fit your unique needs.
+* Register additional components to vue object.
 */
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('NavigationBar', __webpack_require__(71));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('DrinkCard', __webpack_require__(74));
 
+/**
+ * Initialize Vue Instance, catch Favourites from Local Storage.
+ */
 var myApp = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
     router: __WEBPACK_IMPORTED_MODULE_3__routes__["a" /* default */],
-    data: function data() {
-        return {};
-    },
-
     methods: {
         handleLocalStorage: function handleLocalStorage() {
             var favlist = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.ls.get('favouritesID', []);
@@ -37755,6 +37766,9 @@ module.exports = function spread(callback) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(10);
 
 
+/**
+ * List all the available routes, assign them to routes variable.
+ */
 var routes = [{
     path: '/',
     component: __webpack_require__(44)
@@ -37791,7 +37805,11 @@ var routes = [{
     path: '/Show/:id',
     component: __webpack_require__(61)
 }];
-
+/**
+ * Initialize Vue Router Object.
+ *  Use Route variable to pass abailable routes.
+ *  Use HTML5 history mode, scroll to top of the window on page change.
+ */
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: routes,
     mode: 'history',
@@ -37848,6 +37866,9 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_Base__ = __webpack_require__(11);
+//
+//
+//
 //
 //
 //
@@ -37977,6 +37998,10 @@ if (false) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_FetchList__ = __webpack_require__(2);
+//
+//
+//
+//
 //
 //
 //
@@ -38228,6 +38253,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -38452,6 +38480,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -38622,6 +38654,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -38736,19 +38772,23 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * Provides the list of all ingredients.
+ * I've decided not to use it, as it was too messy.
+ */
 var Ingredients = function () {
-    function Ingredients() {
-        _classCallCheck(this, Ingredients);
+  function Ingredients() {
+    _classCallCheck(this, Ingredients);
+  }
+
+  _createClass(Ingredients, null, [{
+    key: 'all',
+    value: function all() {
+      return axios.get(url + 'list.php?i=list');
     }
+  }]);
 
-    _createClass(Ingredients, null, [{
-        key: 'all',
-        value: function all() {
-            return axios.get(url + 'list.php?i=list');
-        }
-    }]);
-
-    return Ingredients;
+  return Ingredients;
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (Ingredients);
@@ -39627,19 +39667,22 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * Pulls the single alcohol details.
+ */
 var FetchSingle = function () {
-    function FetchSingle() {
-        _classCallCheck(this, FetchSingle);
+  function FetchSingle() {
+    _classCallCheck(this, FetchSingle);
+  }
+
+  _createClass(FetchSingle, null, [{
+    key: 'id',
+    value: function id(_id) {
+      return axios.get(url + 'lookup.php?i=' + _id);
     }
+  }]);
 
-    _createClass(FetchSingle, null, [{
-        key: 'id',
-        value: function id(_id) {
-            return axios.get(url + 'lookup.php?i=' + _id);
-        }
-    }]);
-
-    return FetchSingle;
+  return FetchSingle;
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (FetchSingle);
@@ -40205,6 +40248,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -40381,6 +40428,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -40407,11 +40463,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "card hoverable"
   }, [_c('div', {
     staticClass: "card-image"
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'ShowSingle',
+        params: {
+          id: _vm.drink.idDrink
+        }
+      }
+    }
   }, [_c('img', {
     attrs: {
       "src": _vm.drink.strDrinkThumb != null ? _vm.drink.strDrinkThumb : '/img/no_thumb.jpg'
     }
-  }), _vm._v(" "), (this.favs.includes(_vm.drink.idDrink)) ? _c('a', {
+  })]), _vm._v(" "), (this.favs.includes(_vm.drink.idDrink)) ? _c('a', {
     staticClass: "btn-floating halfway-fab waves-effect waves-light red",
     on: {
       "click": function($event) {
@@ -40429,11 +40494,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "material-icons"
-  }, [_vm._v("favorite_border")])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("favorite_border")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "card-content"
-  }, [_c('span', {
-    staticClass: "card-title"
-  }, [_vm._v(_vm._s(_vm.drink.strDrink))])]), _vm._v(" "), _c('div', {
+  }, [_c('router-link', {
+    staticClass: "card-title cursor-pointer",
+    attrs: {
+      "to": {
+        name: 'ShowSingle',
+        params: {
+          id: _vm.drink.idDrink
+        }
+      },
+      "tag": "span"
+    }
+  }, [_vm._v("\n            " + _vm._s(_vm.drink.strDrink) + "\n        ")])], 1), _vm._v(" "), _c('div', {
     staticClass: "card-action"
   }, [_c('router-link', {
     attrs: {

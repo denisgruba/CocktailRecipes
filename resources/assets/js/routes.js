@@ -1,5 +1,8 @@
 import VueRouter from 'vue-router';
 
+/**
+ * List all the available routes, assign them to routes variable.
+ */
 let routes = [
     {
         path: '/',
@@ -46,7 +49,11 @@ let routes = [
         component: require('./views/Show')
     },
 ];
-
+/**
+ * Initialize Vue Router Object.
+ *  Use Route variable to pass abailable routes.
+ *  Use HTML5 history mode, scroll to top of the window on page change.
+ */
 export default new VueRouter({
     routes,
     mode: 'history',

@@ -1,3 +1,7 @@
+/**
+ * Provides a list of drinks filtered by their ingredients.
+ * It was just way to messy to use in this state.
+ */
 <template @addFavourite="console.log('tet')">
     <div class="row">
         <div class="col s12 m12">

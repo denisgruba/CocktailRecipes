@@ -1,3 +1,7 @@
+/**
+ * Template for the Navigation Component Display all the available links.
+ * Also pulls the list of Categories available for the Left sideNav.
+ */
 <template>
     <div class="navbar-fixed">
         <nav class="blue">

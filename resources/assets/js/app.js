@@ -1,8 +1,14 @@
+/**
+ * Import jQuery and Materialize.js Framework. Only used for materialize.
+ */
+
 window.$ = window.jQuery = require('jquery');
 require('./materialize/materialize.js');
 
 /**
-* Import Vue Component and Vue router
+* Import Vue Component and Vue router.
+* Axios supports Ajax requests with Vue.
+* Local Storage for Vue uses HTML5 Local Storage to keep the Liked objects.
 */
 
 import Vue from 'vue';
@@ -11,6 +17,11 @@ import VueRouter from 'vue-router';
 import router from './routes';
 import VueLocalStorage from 'vue-ls';
 
+/**
+ * Assign Vue and Axios to window.
+ * Assign Favourites to Window to make it easier to catch variable between pages.
+ * Assign API url for easy access.
+ */
 window.Vue = Vue;
 window.axios = axios;
 
@@ -19,30 +30,22 @@ window.favouritesObjects = [];
 
 window.url = "http://www.thecocktaildb.com/api/json/v1/1/";
 
-// window.axios.defaults.headers.common = {
-//     'X-Requested-With' : 'XMLHttpRequest'
-// }
-
 Vue.use(VueRouter);
 Vue.use(VueLocalStorage, {namespace: 'vuejs__'});
 
 /**
-* Next, we will create a fresh Vue application instance and attach it to
-* the page. Then, you may begin adding components to this application
-* or customize the JavaScript scaffolding to fit your unique needs.
+* Register additional components to vue object.
 */
 
 Vue.component('NavigationBar', require('./components/NavigationBar.vue'));
 Vue.component('DrinkCard', require('./components/DrinkCard.vue'));
 
+/**
+ * Initialize Vue Instance, catch Favourites from Local Storage.
+ */
 const myApp = new Vue({
     el: '#app',
     router: router,
-    data() {
-        return {
-
-        }
-    },
     methods : {
         handleLocalStorage (){
             var favlist = Vue.ls.get('favouritesID', []);

@@ -1,4 +1,4 @@
-<template @addFavourite="console.log('tet')">
+<template>
     <div class="row">
         <div class="col s12 m12">
             <h4>Favorite Drinks</h4>

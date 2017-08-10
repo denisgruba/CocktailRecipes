@@ -1,7 +1,14 @@
+/**
+ * Template for the single Card Component when listing Drinks.
+ * Vue also checks for clicks to emit the Like handler events.
+ */
+
 <template>
     <div class="card hoverable">
         <div class="card-image">
-            <img :src="drink.strDrinkThumb != null ? drink.strDrinkThumb : '/img/no_thumb.jpg'">
+            <router-link :to="{ name: 'ShowSingle', params: { id: drink.idDrink }}">
+                <img :src="drink.strDrinkThumb != null ? drink.strDrinkThumb : '/img/no_thumb.jpg'">
+            </router-link>
             <a v-if="this.favs.includes(drink.idDrink)" class="btn-floating halfway-fab waves-effect waves-light red"
                 @click="removeFavourite(drink)"
             >
@@ -14,7 +21,9 @@
             </a>
         </div>
         <div class="card-content">
-            <span class="card-title">{{drink.strDrink}}</span>
+            <router-link class="card-title cursor-pointer" :to="{ name: 'ShowSingle', params: { id: drink.idDrink }}" tag="span">
+                {{drink.strDrink}}
+            </router-link>
         </div>
         <div class="card-action">
             <router-link :to="{ name: 'ShowSingle', params: { id: drink.idDrink }}">
