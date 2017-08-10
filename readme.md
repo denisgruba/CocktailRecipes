@@ -19,6 +19,7 @@ Uses [Vue 2](https://vuejs.org/) JavaScript framework for:
 
 - Single Page App functionality
 - Dynamic data binding
+- Filtering data
 - Templates
 
 [Webpack](https://webpack.js.org/) is used to compile SCSS and JS.

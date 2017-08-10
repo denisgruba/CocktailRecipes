@@ -17,11 +17,11 @@
                     <router-link to="/Search" exact tag="li"><a>Search</a></router-link>
                     <router-link to="/List/Favorites" exact tag="li"><a>Favorites</a></router-link>
                 </ul>
-                <ul class="right">
+                <!-- <ul class="right">
                     <li>
                         <a @click="clearLocalStorage">Remove All Favorites</a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </nav>
     </div>
