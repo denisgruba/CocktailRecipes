@@ -1,3 +1,9 @@
+/**
+ * Every single Favourite drink will be displayed here.
+ * Drink objects are saved in a variable and then saved to Local Storage,
+ * so they can persist even on a page reload.
+ * Drinks without image can be filtered out.
+ */
 <template>
     <div class="row">
         <div class="col s12 m12">

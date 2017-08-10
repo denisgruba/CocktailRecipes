@@ -1,3 +1,9 @@
+/**
+ * Template for the Show Drink page.
+ * If I was to build the API for that,
+ * I wouldn't use a separate variable name for each 15 slots of ingredients.
+ * They should be rather stored in the object, so I could easily loop through table.
+ */
 <template>
     <div class="row">
         <div class="col s12 m6 left">

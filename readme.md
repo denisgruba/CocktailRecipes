@@ -6,7 +6,6 @@
 Uses [TheCocktailDB](http://www.thecocktaildb.com/) API to list and filter Cocktail recipes. Allows to save drinks as Favorite.
 
 - List Cocktails by Alcoholic and Non Alcoholic
-- Filter Recipes by their ingredients
 - Filter Out Items that are missing pictures
 - See the recipe details
 - Add recipe to Favorites
@@ -32,3 +31,9 @@ I'm using [MaterializeCSS](http://materializecss.com/) as a css framework.
 
 - Build files can be found in the "Resources/Assets" folder
 - Compiled files are inside "Public" folders
+
+## Run Build
+
+- Make sure to run the "npm install" command from the root folder.
+- Use "npm run dev" or "npm run watch" to compile.
+- View site from the public folder.
