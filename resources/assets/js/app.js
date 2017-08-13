@@ -10,6 +10,7 @@ require('./materialize/materialize.js');
 * Vuex is adding cross-component interactions and variable exchange.
 * Axios supports Ajax requests with Vue.
 * Local Storage for Vue uses HTML5 Local Storage to keep the Liked objects. Together with Vuex, they are used to dynamically store the data upon interaction.
+* Vue Progressive Image is used to add image loading animation.
 */
 
 import Vue from 'vue';

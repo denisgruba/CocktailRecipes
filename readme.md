@@ -9,8 +9,9 @@ Uses [TheCocktailDB](http://www.thecocktaildb.com/) API to list and filter Cockt
 - Filter Out Items that are missing pictures (Setting saved in Local Storage)
 - See the recipe details
 - Add recipe to Favorites
-- Favorite Recipes are stored in browser's Local Storage
+- Favorite Recipes are stored in browser's Local Storage 
 - Search for Recipes by their name
+- Progressive image load
 
 ## Details about the code
 

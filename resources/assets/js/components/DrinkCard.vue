@@ -1,6 +1,6 @@
 /**
  * Template for the single Card Component when listing Drinks.
- * Vue also checks for clicks to emit the Like handler events.
+ * Uses progressive image loading. Communicates with other components with help of Vuex.
  */
 
 <template>
