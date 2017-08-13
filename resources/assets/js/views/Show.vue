@@ -24,9 +24,11 @@
             </div>
         </div>
         <div class="col s12 m6 right">
-            <p class="center-align">
-                <img class="materialboxed responsive-img" :src="drink.strDrinkThumb">
-            </p>
+            <div class="card-panel hoverable no-padding">
+                <p class="center-align">
+                    <img class=" materialboxed responsive-img" :src="drink.strDrinkThumb">
+                </p>
+            </div>
         </div>
         <div class="col s12 m6 left">
             <div class="card-panel">
