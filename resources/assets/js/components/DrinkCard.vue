@@ -7,7 +7,7 @@
     <div class="card hoverable">
         <div class="card-image">
             <router-link :to="{ name: 'ShowSingle', params: { id: drink.idDrink }}">
-                <img :src="drink.strDrinkThumb != null ? drink.strDrinkThumb : '/img/no_thumb.jpg'">
+                <progressive-img placeholder="/img/no_thumb.jpg" :src="drink.strDrinkThumb != null ? drink.strDrinkThumb : '/img/no_thumb.jpg'" />
             </router-link>
             <a v-if="this.favs.includes(drink.idDrink)" class="btn-floating halfway-fab waves-effect waves-light red"
                 @click="removeFavourite(drink)"

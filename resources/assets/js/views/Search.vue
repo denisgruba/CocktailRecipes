@@ -6,6 +6,7 @@
         <div class="col s12 m12">
             <h4>Search By Name</h4>
             <h5 v-if="this.searchString">Name Contains "{{this.searchString}}"</h5>
+            <h6 v-if="searchString && drinks!=null">Found {{drinks.length}}:</h6>
             <div class="input-field">
                 <i class="material-icons prefix">search</i>
                 <label for="searchString">Search</label>
@@ -45,15 +46,7 @@ export default {
     },
     watch: {
         searchString () {
-            // if(this.searchString.length <=1){
-                this.updateDrinks();
-            // } else {
-                // this.drinks = this.drinks.filter( function(el) {
-                //     if(el.strDrink.includes(this.searchString)){
-                //         return true
-                //     } else return false;
-                // });
-            // }
+            this.updateDrinks();
         },
     },
     computed: {

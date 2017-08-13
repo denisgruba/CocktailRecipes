@@ -16,8 +16,9 @@
     "laravel-mix": "^1.0",
     "materialize-css": "^0.100.1",
     "vue": "^2.1.10",
+    "vue-ls": "^2.3.0",
+    "vue-progressive-image": "^2.1.2",
     "vue-router": "^2.7.0",
-    "vuex": "^2.3.1",
-    "vue-ls": "^2.3.0"
+    "vuex": "^2.3.1"
   }
 }
