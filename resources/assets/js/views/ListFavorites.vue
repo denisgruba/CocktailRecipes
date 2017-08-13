@@ -8,12 +8,11 @@
     <div class="row">
         <div class="col s12 m12">
             <h4>Favorite Drinks</h4>
-            <div class="fixed-action-btn fab-btn-left-bottom">
-                <a @click="toggleImageFilter" class="btn-floating btn-large waves-effect waves-light blue tooltipped" data-position="right" data-delay="50" data-tooltip="Toggle Display of Missing Images"><i class="material-icons">broken_image</i></a>
-            </div>
+            <h5 v-if=""></h5>
         </div>
+
         <div v-for="drink in drinksFiltered" class="col s12 m6 l4 xl3 drink-container">
-            <drink-card :drink="drink" :favs="favouritesID" @fave="addFavourite" @unfave="removeFavourite"></drink-card>
+            <drink-card :drink="drink" :favs="favouritesID"></drink-card>
         </div>
     </div>
 </template>
@@ -25,23 +24,14 @@ export default {
     data() {
         return {
             drinks: [],
-            favouritesID: [],
-            favouritesObjects: [],
-            filterImagesOut: false,
         }
     },
     methods: {
         addFavourite (object) {
-            this.favouritesID.push(object.idDrink);
-            this.favouritesObjects.push(object);
+            store.commit('addFavourite', object);
         },
         removeFavourite (object) {
-            this.favouritesID.splice( this.favouritesID.indexOf(object.idDrink), 1 );
-            this.favouritesObjects = this.favouritesObjects.filter( function(el) {
-                if(el.idDrink !== object.idDrink){
-                    return true
-                } else return false;
-            });
+            store.commit('removeFavourite', object);
         },
         spaceThis (text) {
             return text.replace("_", " ");
@@ -53,31 +43,27 @@ export default {
             else
                 this.drinks = [];
         },
-        toggleImageFilter () {
-            this.filterImagesOut=!this.filterImagesOut;
-        }
     },
     created() {
         this.updateDrinks();
-        this.favouritesID = favouritesID;
-        this.favouritesObjects = favouritesObjects;
     },
     watch: {
         '$route' (to, from) {
             this.updateDrinks();
         },
-        favouritesID () {
-            favouritesID = this.favouritesID;
-            Vue.ls.set('favouritesID', favouritesID);
-        },
-        favouritesObjects () {
-            favouritesObjects = this.favouritesObjects;
-            Vue.ls.set('favouritesObjects', favouritesObjects);
-        }
     },
     computed: {
+        favouritesID () {
+            return store.state.favouritesID;
+        },
+        favouritesObjects () {
+            return store.state.favouritesObjects;
+        },
+        hideThumbs () {
+            return store.state.hideThumbs;
+        },
         drinksFiltered: function () {
-            if(this.filterImagesOut){
+            if(this.hideThumbs){
                 return this.favouritesObjects.filter( function(el) {
                     if(el.strDrinkThumb){
                         return true

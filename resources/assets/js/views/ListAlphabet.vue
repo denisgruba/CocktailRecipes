@@ -7,9 +7,6 @@
         <div class="col s12 m12">
             <h4>Search alphabet</h4>
             <h5>Contains {{$route.params.letter ? $route.params.letter : 'Alphabet'}}</h5>
-            <div class="fixed-action-btn fab-btn-left-bottom">
-                <a @click="toggleImageFilter" class="btn-floating btn-large waves-effect waves-light blue tooltipped" data-position="right" data-delay="50" data-tooltip="Toggle Display of Missing Images"><i class="material-icons">broken_image</i></a>
-            </div>
         </div>
         <ul class="pagination">
             <li v-for="letter in alphabet" :class="$route.params.letter == letter ? 'active' : 'waves-effect'">
@@ -19,7 +16,7 @@
             </li>
         </ul>
         <div v-for="drink in drinksFiltered" class="col s12 m6 l4 xl3">
-            <drink-card :drink="drink" :favs="favouritesID" @fave="addFavourite" @unfave="removeFavourite"></drink-card>
+            <drink-card :drink="drink" :favs="favouritesID"></drink-card>
         </div>
     </div>
 </template>
@@ -30,26 +27,11 @@ import FetchList from '../models/FetchList';
 export default {
     data() {
         return {
-            drinks: {},
+            drinks: [],
             alphabet: [],
-            favouritesID: [],
-            favouritesObjects: [],
-            filterImagesOut: false,
         }
     },
     methods: {
-        addFavourite (object) {
-            this.favouritesID.push(object.idDrink);
-            this.favouritesObjects.push(object);
-        },
-        removeFavourite (object) {
-            this.favouritesID.splice( this.favouritesID.indexOf(object.idDrink), 1 );
-            this.favouritesObjects = this.favouritesObjects.filter( function(el) {
-                if(el.idDrink !== object.idDrink){
-                    return true
-                } else return false;
-            });
-        },
         assignAlphabet (){
             var charCodeRange = {
                 start: 65,
@@ -66,32 +48,28 @@ export default {
             else
                 this.drinks = {};
         },
-        toggleImageFilter () {
-            this.filterImagesOut=!this.filterImagesOut;
-        }
     },
     created() {
         this.assignAlphabet();
         this.updateDrinks();
-        this.favouritesID = favouritesID;
-        this.favouritesObjects = favouritesObjects;
     },
     watch: {
         '$route' (to, from) {
             this.updateDrinks();
         },
-        favouritesID () {
-            favouritesID = this.favouritesID;
-            Vue.ls.set('favouritesID', favouritesID);
-        },
-        favouritesObjects () {
-            favouritesObjects = this.favouritesObjects;
-            Vue.ls.set('favouritesObjects', favouritesObjects);
-        }
     },
     computed: {
+        favouritesID () {
+            return store.state.favouritesID;
+        },
+        favouritesObjects () {
+            return store.state.favouritesObjects;
+        },
+        hideThumbs () {
+            return store.state.hideThumbs;
+        },
         drinksFiltered: function () {
-            if(this.filterImagesOut){
+            if(this.hideThumbs){
                 return this.drinks.filter( function(el) {
                     if(el.strDrinkThumb){
                         return true
@@ -100,6 +78,5 @@ export default {
             } else return this.drinks;
         }
     }
-
 }
 </script>

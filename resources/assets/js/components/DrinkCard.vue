@@ -42,11 +42,11 @@ export default {
     },
     props: ['drink', 'favs'],
     methods: {
-        addFavourite (drink) {
-            this.$emit('fave', drink);
+        addFavourite (object) {
+            store.commit('addFavourite', object);
         },
-        removeFavourite (drink) {
-            this.$emit('unfave', drink);
+        removeFavourite (object) {
+            store.commit('removeFavourite', object);
         },
     },
 }

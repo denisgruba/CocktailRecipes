@@ -7,8 +7,8 @@
             <h4>Browse</h4>
             <h5>Find Inspiration with this set of Random Drinks:</h5>
         </div>
-        <div v-for="drink in drinks" class="col s12 m6 l4 xl3 drink-container">
-            <drink-card :drink="drink[0]" :favs="favouritesID" @fave="addFavourite" @unfave="removeFavourite"></drink-card>
+        <div v-for="drink in drinksFiltered" class="col s12 m6 l4 xl3 drink-container">
+            <drink-card :drink="drink" :favs="favouritesID"></drink-card>
         </div>
     </div>
 </template>
@@ -20,46 +20,42 @@ export default {
     data() {
         return {
             drinks: [],
-            favouritesID: [],
-            favouritesObjects: []
         }
     },
     methods: {
-        addFavourite (object) {
-            this.favouritesID.push(object.idDrink);
-            this.favouritesObjects.push(object);
-        },
-        removeFavourite (object) {
-            this.favouritesID.splice( this.favouritesID.indexOf(object.idDrink), 1 );
-            this.favouritesObjects = this.favouritesObjects.filter( function(el) {
-                if(el.idDrink !== object.idDrink){
-                    return true
-                } else return false;
-            });
-        },
         updateDrinks () {
             for(var i = 0; i < 12; i++){
                 Base.random()
-                    .then(response => this.drinks.push(response.data.drinks));
+                    .then(response => this.drinks.push(response.data.drinks[0]));
             }
         }
     },
     created() {
         this.updateDrinks();
-        this.favouritesID = favouritesID;
-        this.favouritesObjects = favouritesObjects;
     },
     watch: {
         '$route' (to, from) {
             this.updateDrinks();
         },
+    },
+    computed: {
         favouritesID () {
-            favouritesID = this.favouritesID;
-            Vue.ls.set('favouritesID', favouritesID);
+            return store.state.favouritesID;
         },
         favouritesObjects () {
-            favouritesObjects = this.favouritesObjects;
-            Vue.ls.set('favouritesObjects', favouritesObjects);
+            return store.state.favouritesObjects;
+        },
+        hideThumbs () {
+            return store.state.hideThumbs;
+        },
+        drinksFiltered: function () {
+            if(this.hideThumbs){
+                return this.drinks.filter( function(el) {
+                    if(el.strDrinkThumb){
+                        return true
+                    } else return false;
+                });
+            } else return this.drinks;
         }
     }
 }

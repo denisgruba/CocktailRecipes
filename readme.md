@@ -6,7 +6,7 @@
 Uses [TheCocktailDB](http://www.thecocktaildb.com/) API to list and filter Cocktail recipes. Allows to save drinks as Favorite.
 
 - List Cocktails by Alcoholic and Non Alcoholic
-- Filter Out Items that are missing pictures
+- Filter Out Items that are missing pictures (Setting saved in Local Storage)
 - See the recipe details
 - Add recipe to Favorites
 - Favorite Recipes are stored in browser's Local Storage
@@ -17,9 +17,10 @@ Uses [TheCocktailDB](http://www.thecocktaildb.com/) API to list and filter Cockt
 Uses [Vue 2](https://vuejs.org/) JavaScript framework for:
 
 - Single Page App functionality
-- Dynamic data binding
+- Dynamic data binding synchronised between components
 - Filtering data
 - Templates
+- Storing data in Local Storage
 
 [Webpack](https://webpack.js.org/) is used to compile SCSS and JS.
 

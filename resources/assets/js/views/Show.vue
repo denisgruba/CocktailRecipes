@@ -13,6 +13,7 @@
                     <h5 class="grey-text text-darken-3">Base: {{drink.strAlcoholic}}</h5>
                     <h6 class="grey-text text-darken-3">Category: {{drink.strCategory}}</h6>
                     <h6 class="grey-text text-darken-3">Glass: {{drink.strGlass}}</h6>
+                    <br>
                     <p>{{drink.strInstructions}}</p>
 
                 </div>
@@ -112,22 +113,14 @@ export default {
     data() {
         return {
             drink: {},
-            favouritesID: [],
-            favouritesObjects: []
         }
     },
     methods: {
         addFavourite (object) {
-            this.favouritesID.push(object.idDrink);
-            this.favouritesObjects.push(object);
+            store.commit('addFavourite', object);
         },
         removeFavourite (object) {
-            this.favouritesID.splice( this.favouritesID.indexOf(object.idDrink), 1 );
-            this.favouritesObjects = this.favouritesObjects.filter( function(el) {
-                if(el.idDrink !== object.idDrink){
-                    return true
-                } else return false;
-            });
+            store.commit('removeFavourite', object);
         },
         updateDrink () {
             if(this.$route.params.id)
@@ -138,28 +131,21 @@ export default {
             });
         }
     },
-    created() {
+    created () {
         this.updateDrink();
-        this.favouritesID = favouritesID;
-        this.favouritesObjects = favouritesObjects;
     },
     watch: {
         '$route' (to, from) {
             this.updateDrink();
         },
+    },
+    computed: {
         favouritesID () {
-            favouritesID = this.favouritesID;
-            Vue.ls.set('favouritesID', favouritesID);
+            return store.state.favouritesID;
         },
         favouritesObjects () {
-            favouritesObjects = this.favouritesObjects;
-            Vue.ls.set('favouritesObjects', favouritesObjects);
-        }
+            return store.state.favouritesObjects;
+        },
     }
 }
 </script>
-<style>
-h6{
-    font-size: 1.2rem;
-}
-</style>
