@@ -10,7 +10,6 @@ require('./materialize/materialize.js');
 * Vuex is adding cross-component interactions and variable exchange.
 * Axios supports Ajax requests with Vue.
 * Local Storage for Vue uses HTML5 Local Storage to keep the Liked objects. Together with Vuex, they are used to dynamically store the data upon interaction.
-* Vue Progressive Image is used to add image loading animation.
 */
 
 import Vue from 'vue';
@@ -19,7 +18,6 @@ import axios from 'axios';
 import VueRouter from 'vue-router';
 import router from './routes';
 import VueLocalStorage from 'vue-ls';
-import VueProgressiveImage from 'vue-progressive-image'
 
 /**
 * Assign Vue and Axios to window.
@@ -33,10 +31,6 @@ window.url = "http://www.thecocktaildb.com/api/json/v1/1/";
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueLocalStorage, {namespace: 'ocasta__'});
-Vue.use(VueProgressiveImage, {
-    placeholder: "/img/no_thumb.jpg",
-    delay: 100
-});
 
 /**
 * Register additional components to vue object.
