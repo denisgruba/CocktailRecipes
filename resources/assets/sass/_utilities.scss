@@ -27,3 +27,19 @@
 .no-padding{
     padding: 0;
 }
+.card .card-image {
+    padding-bottom: 100%;
+    background-image: url('/img/no_thumb.jpg');
+    background-size: contain;
+    img {
+        opacity: 0;
+        position: absolute!important;
+        animation: fadein .5s;
+        animation-delay: .1s;
+        animation-fill-mode: forwards;
+    }
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
