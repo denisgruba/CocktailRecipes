@@ -1,4 +1,9 @@
 /**
+ * Required to support IE11
+ */
+require('es6-promise').polyfill();
+require('./includes');
+/**
 * Import jQuery and Materialize.js Framework. Only used for materialize.
 */
 
