@@ -13,6 +13,7 @@
                 <input type="text" id="searchString" class="validate" v-model="searchString">
             </div>
         </div>
+        <!-- Loops through Filtered Drinks computed property and displays Drink Card for each available item -->
         <div v-if="drinks" v-for="drink in drinksFiltered" class="col s12 m6 l4 xl3">
             <drink-card :drink="drink" :favs="favouritesID"></drink-card>
         </div>
@@ -25,31 +26,34 @@ import FetchList from '../models/FetchList';
 export default {
     data() {
         return {
-            drinks: [],
-            searchString: '',
+            drinks: [], //Initialize empty drinks array
+            searchString: '', //Initialize empty search string
         }
     },
     methods: {
+        /**
+         * Get the list of drinks matching the searchString
+         */
         updateDrinks () {
             if(this.searchString)
-            FetchList.byLetter(this.searchString)
+            FetchList.byString(this.searchString)
             .then(response => this.drinks = response.data.drinks);
             else
             this.drinks = [];
         },
-        toggleImageFilter () {
-            this.filterImagesOut=!this.filterImagesOut;
-        }
-    },
-    created() {
-        this.updateDrinks();
     },
     watch: {
+        /**
+         * If searchString is changed, update the drink list
+         */
         searchString () {
             this.updateDrinks();
         },
     },
     computed: {
+        /**
+         * Binds dynamic favouritesID, favouritesObjects and hideThumbs values taken from Vuex storage.
+         */
         favouritesID () {
             return store.state.favouritesID;
         },
@@ -59,15 +63,21 @@ export default {
         hideThumbs () {
             return store.state.hideThumbs;
         },
+        /**
+         * Returns unchanged array of drinks, or returns list of drinks only with items that have image.
+         */
         drinksFiltered: function () {
             if(this.hideThumbs){
+                // If hideThumbs is true, filter out items without images
                 return this.drinks.filter( function(el) {
+                    // Filter keeps the item in array if returned value is truthy
                     if(el.strDrinkThumb){
+                        // If drink thumb is defined, keep El in array
                         return true
                     } else return false;
                 });
             } else return this.drinks;
-        },
+        }
     }
 
 }

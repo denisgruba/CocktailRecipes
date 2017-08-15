@@ -4,6 +4,12 @@
 .pagination{
     text-align: center;
 }
+.no-padding{
+    padding: 0;
+}
+/**
+ * Fix the drinks floating to the right, when of different size
+ */
 @media #{$medium-only}{
     .drink-container:nth-child(2n+2) {
         clear: left;
@@ -18,33 +24,4 @@
     .drink-container:nth-child(4n+2) {
         clear: left;
     }
-}
-.fab-btn-left-bottom{
-    z-index: 1001;
-    left: 45px;
-    bottom: 45px;
-}
-.no-padding{
-    padding: 0;
-}
-.card .card-image {
-    padding-bottom: 100%;
-    background-image: url('/img/no_thumb.jpg');
-    background-size: contain;
-    img {
-        opacity: 0;
-        position: absolute!important;
-        animation: fadein .75s;
-        animation-delay: .5s;
-        animation-fill-mode: forwards;
-    }
-}
-.card {
-    opacity: 0;
-    animation: fadein .75s;
-    animation-fill-mode: forwards;
-}
-@keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
 }

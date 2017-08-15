@@ -10,7 +10,7 @@
             <h4>Favorite Drinks</h4>
             <h5 v-if=""></h5>
         </div>
-
+        <!-- Loops through Filtered Drinks computed property and displays Drink Card for each available item -->
         <div v-for="drink in drinksFiltered" class="col s12 m6 l4 xl3 drink-container">
             <drink-card :drink="drink" :favs="favouritesID"></drink-card>
         </div>
@@ -23,36 +23,13 @@ import FetchList from '../models/FetchList';
 export default {
     data() {
         return {
-            drinks: [],
+            drinks: [], //Initialize empty drinks array
         }
     },
-    methods: {
-        addFavourite (object) {
-            store.commit('addFavourite', object);
-        },
-        removeFavourite (object) {
-            store.commit('removeFavourite', object);
-        },
-        spaceThis (text) {
-            return text.replace("_", " ");
-        },
-        updateDrinks () {
-            if(this.$route.params.base)
-                FetchList.byBase(this.$route.params.base)
-                    .then(response => this.drinks = response.data.drinks);
-            else
-                this.drinks = [];
-        },
-    },
-    created() {
-        this.updateDrinks();
-    },
-    watch: {
-        '$route' (to, from) {
-            this.updateDrinks();
-        },
-    },
     computed: {
+        /**
+         * Binds dynamic favouritesID, favouritesObjects and hideThumbs values taken from Vuex storage.
+         */
         favouritesID () {
             return store.state.favouritesID;
         },
@@ -62,10 +39,17 @@ export default {
         hideThumbs () {
             return store.state.hideThumbs;
         },
+        /**
+         * Returns unchanged array of drinks, or returns list of drinks only with items that have image.
+         * This one is different from other functions as it takes the favouritesObjects as the source array.
+         */
         drinksFiltered: function () {
             if(this.hideThumbs){
+                // If hideThumbs is true, filter out items without images
                 return this.favouritesObjects.filter( function(el) {
+                    // Filter keeps the item in array if returned value is truthy
                     if(el.strDrinkThumb){
+                        // If drink thumb is defined, keep El in array
                         return true
                     } else return false;
                 });

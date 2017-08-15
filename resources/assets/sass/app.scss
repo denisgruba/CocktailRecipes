@@ -1,14 +1,14 @@
 // Framework
-@import "materialize/materialize";
+@import "materialize/materialize"; // Import materialize framework
 
 // Variables
 @import "variables";
 
 // Imports
-@import "transitions";
-@import "nav";
-@import "utilities";
-@import "progressive-image";
+@import "transitions"; //CSS transitions and animations
+@import "nav"; //Nav elements overrides
+@import "utilities"; //Various CSS lements
+@import "progressive-image"; //CSS for card load effect
 
 body{
     background-color: #fafafa;

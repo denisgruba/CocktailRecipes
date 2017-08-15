@@ -15,6 +15,7 @@
                 </router-link>
             </li>
         </ul>
+        <!-- Loops through Filtered Drinks computed property and displays Drink Card for each available item -->
         <div v-for="drink in drinksFiltered" class="col s12 m6 l4 xl3">
             <drink-card :drink="drink" :favs="favouritesID"></drink-card>
         </div>
@@ -27,11 +28,14 @@ import FetchList from '../models/FetchList';
 export default {
     data() {
         return {
-            drinks: [],
+            drinks: [], //Initialize empty drinks array
             alphabet: [],
         }
     },
     methods: {
+        /**
+         * Creates an alphabet based on character code range.
+         */
         assignAlphabet (){
             var charCodeRange = {
                 start: 65,
@@ -41,24 +45,35 @@ export default {
                 this.alphabet.push(String.fromCharCode(cc));
             }
         },
+        /**
+         * Get the list of drinks filtered by the selected letter.
+         */
         updateDrinks () {
             if(this.$route.params.letter)
-                FetchList.byLetter(this.$route.params.letter)
+                FetchList.byString(this.$route.params.letter)
                     .then(response => this.drinks = response.data.drinks);
             else
                 this.drinks = {};
         },
     },
     created() {
+        // Create the alphabet array on init
         this.assignAlphabet();
+        // Get the list of drinks after initialized
         this.updateDrinks();
     },
     watch: {
+        /**
+         * Reload the list of drinks if route changes for the same component
+         */
         '$route' (to, from) {
             this.updateDrinks();
         },
     },
     computed: {
+        /**
+         * Binds dynamic favouritesID, favouritesObjects and hideThumbs values taken from Vuex storage.
+         */
         favouritesID () {
             return store.state.favouritesID;
         },
@@ -70,8 +85,11 @@ export default {
         },
         drinksFiltered: function () {
             if(this.hideThumbs){
+                // If hideThumbs is true, filter out items without images
                 return this.drinks.filter( function(el) {
+                    // Filter keeps the item in array if returned value is truthy
                     if(el.strDrinkThumb){
+                        // If drink thumb is defined, keep El in array
                         return true
                     } else return false;
                 });

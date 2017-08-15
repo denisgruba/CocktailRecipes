@@ -4,7 +4,10 @@
  */
 class Ingredients {
     static all() {
-            return axios.get(url+'list.php?i=list');
+        /**
+         * Returns a promise of ingredients list
+         */
+        return axios.get(url+'list.php?i=list');
     }
 }
 

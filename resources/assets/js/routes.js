@@ -6,7 +6,7 @@ import VueRouter from 'vue-router';
 let routes = [
     {
         path: '*',
-        component: require('./views/Home') 
+        component: require('./views/Home')
     },
     {
         path: '/',
@@ -59,8 +59,8 @@ let routes = [
  *  Use HTML5 history mode, scroll to top of the window on page change.
  */
 export default new VueRouter({
-    routes,
-    mode: 'history',
+    routes, //list of all the routes found above
+    mode: 'history', //use HTML5 History
     linkActiveClass: 'active',
     scrollBehavior (to, from, savedPosition) {
         document.body.scrollTop = document.documentElement.scrollTop = 0;

@@ -4,6 +4,7 @@
  */
 
 <template>
+    <!-- display a single drink -->
     <div class="card hoverable">
         <div class="card-image">
             <router-link :to="{ name: 'ShowSingle', params: { id: drink.idDrink }}">
@@ -35,17 +36,14 @@
 
 <script>
 export default {
-    data() {
-        return {
-
-        }
-    },
     props: ['drink', 'favs'],
     methods: {
         addFavourite (object) {
+            // add to favourite drinks
             store.commit('addFavourite', object);
         },
         removeFavourite (object) {
+            // remove from favourite drinks
             store.commit('removeFavourite', object);
         },
     },

@@ -23,7 +23,7 @@
                 <ul class="left">
                     <router-link to="/" exact tag="li"><a>Home</a></router-link>
                     <router-link to="/Search" exact tag="li"><a>Search</a></router-link>
-                    <router-link to="/List/Favorites" exact tag="li"><a>Favorites <span v-if="favouritesID.length">({{favouritesID.length}})</span></a></router-link>
+                    <router-link to="/List/Favorites" exact tag="li"><a>Favourites <span v-if="favouritesID.length">({{favouritesID.length}})</span></a></router-link>
                 </ul>
             </div>
         </nav>

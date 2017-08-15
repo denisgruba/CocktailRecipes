@@ -119,29 +119,42 @@ export default {
     },
     methods: {
         addFavourite (object) {
+            // add to favourite drinks
             store.commit('addFavourite', object);
         },
         removeFavourite (object) {
+            // remove from favourite drinks
             store.commit('removeFavourite', object);
         },
+        /**
+         * Get the data of a drink based on the url ID
+         */
         updateDrink () {
             if(this.$route.params.id)
                 FetchSingle.id(this.$route.params.id)
                     .then(response => this.drink = response.data.drinks[0]);
+            // Initialize the image zoom in effect
             $(document).ready(function(){
                 $('.materialboxed').materialbox();
             });
         }
     },
     created () {
+        // Get the drink data after initialized
         this.updateDrink();
     },
     watch: {
+        /**
+         * Reload the drink data if the url changes
+         */
         '$route' (to, from) {
             this.updateDrink();
         },
     },
     computed: {
+        /**
+         * Binds dynamic favouritesID and favouritesObjects values taken from Vuex storage.
+         */
         favouritesID () {
             return store.state.favouritesID;
         },

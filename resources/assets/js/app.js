@@ -2,7 +2,7 @@
  * Required to support IE11
  */
 require('es6-promise').polyfill();
-require('./includes');
+require('./includes'); //recreates ES6 includes function for IE11
 /**
 * Import jQuery and Materialize.js Framework. Only used for materialize.
 */
@@ -58,19 +58,22 @@ const store = new Vuex.Store({
     },
     mutations: {
         toggleThumbs (state) {
+            // Change hideThumbs value to it's opposite
             state.hideThumbs = !state.hideThumbs;
             Vue.ls.set('hideThumbs', state.hideThumbs);
         },
         addFavourite (state, object){
+            // Updates and saves favourites
             state.favouritesID.push(object.idDrink);
             state.favouritesObjects.push(object);
             Vue.ls.set('favouritesID', state.favouritesID);
             Vue.ls.set('favouritesObjects', state.favouritesObjects);
-
         },
         removeFavourite (state, object) {
-            state.favouritesID.splice( state.favouritesID.indexOf(object.idDrink), 1 );
+            // Removes favourite from the list that matches passed object
+            state.favouritesID.splice( state.favouritesID.indexOf(object.idDrink), 1 ); // Remove the index that matches object's id
             state.favouritesObjects = state.favouritesObjects.filter( function(el) {
+                // Keep all the objects in the array with the exception of the passed object
                 if(el.idDrink !== object.idDrink){
                     return true
                 } else return false;
