@@ -24,10 +24,10 @@ export default {
     },
     methods: {
         updateDrinks () {
-            for(var i = 0; i < 12; i++){
-                Base.random()
+            for(var i = 0; i < 12; i++) {
+                Base.random(i)
                     .then(response => this.drinks.push(response.data.drinks[0]));
-            }
+            };
         }
     },
     created() {
