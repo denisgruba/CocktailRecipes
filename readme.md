@@ -1,7 +1,7 @@
 
 ## Cocktail Database
 
-[http://ocasta.denisgruba.me/](http://ocasta.denisgruba.me/)
+[http://cocktails.denisgruba.me/](http://cocktails.denisgruba.me/)
 
 Uses [TheCocktailDB](http://www.thecocktaildb.com/) API to list and filter Cocktail recipes. Allows to save drinks as Favorite.
 
